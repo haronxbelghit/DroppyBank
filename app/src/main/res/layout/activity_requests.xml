@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix,UnusedAttribute,UselessLeaf,Autofill,UselessParent,LabelFor,InefficientWeight,RtlSymmetry,SmallSp,UseCompoundDrawables,HardcodedText,RtlHardcoded,ObsoleteLayoutParam,NestedWeights,ContentDescription">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/requests_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar"
+            android:layout_alignParentTop="true"
+            />
+
+        <RelativeLayout
+            android:id="@+id/layout_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/requests_toolbar">
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorPrimary"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:layout_marginLeft="@dimen/spacing_mmiddle"
+                android:layout_marginRight="@dimen/spacing_mmiddle">
+
+                <include
+                    android:id="@+id/requests_top_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/requests_tops_layout"
+                    android:layout_marginBottom="@dimen/spacing_large"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/users_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollingCache="true"
+                    android:scrollbars="vertical"
+                    android:cacheColorHint="#00000000"
+                    android:background="@color/md_grey_100"
+                    android:layout_marginTop="@dimen/spacing_large"/>
+
+                <!--This stops hiding content of the last item in the list-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/md_grey_100"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

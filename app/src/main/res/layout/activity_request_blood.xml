@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingPrefix,PrivateResource,UnusedAttribute,UselessLeaf,Autofill,UselessParent,LabelFor,InefficientWeight,RtlSymmetry,SmallSp,UseCompoundDrawables,HardcodedText,RtlHardcoded,ObsoleteLayoutParam,NestedWeights,ContentDescription">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_alignParentTop="true"
+            android:theme="@style/ArrowToolbarStyle"
+            app:titleTextColor="@color/colorPrimary"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:fontFamily="@fonts/montserrat_bold"
+                android:textColor="@color/be_hero_dark"
+                android:text="@string/activity_request_blood" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Blood For"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/be_hero_dark"
+                    app:fontFamily="@fonts/montserrat_regular" />
+
+                <Spinner
+                    android:id="@+id/request_for_spinner"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:dropDownWidth="match_parent"
+                    android:minHeight="?attr/actionBarSize"
+                    app:fontFamily="@fonts/montserrat_regular"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingLeft="@dimen/spacing_xlarge"
+                    android:paddingRight="@dimen/spacing_xlarge"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:textColor="@color/be_hero_dark_grey"
+                    android:popupBackground="@android:color/white"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:background="@drawable/spinner_round_bg"
+                    android:stateListAnimator="@drawable/spinner_anim"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="City Preference"
+                    android:textColor="@color/be_hero_dark"
+                    app:fontFamily="@fonts/montserrat_regular"
+                    android:layout_marginTop="@dimen/spacing_xlarge"/>
+
+                <Spinner
+                    android:id="@+id/city_spinner"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:dropDownWidth="match_parent"
+                    android:minHeight="?attr/actionBarSize"
+                    app:fontFamily="@fonts/montserrat_regular"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingLeft="@dimen/spacing_xlarge"
+                    android:paddingRight="@dimen/spacing_xlarge"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:textColor="@color/be_hero_dark_grey"
+                    android:popupBackground="@android:color/white"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:background="@drawable/spinner_round_bg"
+                    android:stateListAnimator="@drawable/spinner_anim"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="Select Blood Group"
+                    android:textColor="@color/be_hero_dark"
+                    app:fontFamily="@fonts/montserrat_regular"
+                    android:layout_marginTop="@dimen/spacing_xlarge" />
+
+                <!--Blood Group Radio Buttons-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xlarge">
+
+                    <LinearLayout
+                        android:id="@+id/blood_group_radio_layout_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true">
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_1"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="A+"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_2"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="A+"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_3"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="B+"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_4"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="B+"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_5"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="0+"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_6"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="0-"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_below="@+id/blood_group_radio_layout_1">
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_7"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="AB-"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/blood_group_radio_group_8"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/blood_group_radio_8"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:text="AB-"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:padding="@dimen/spacing_mmiddle"
+                                app:fontFamily="@fonts/montserrat_regular"
+                                android:button="@android:color/transparent"
+                                android:background="@drawable/radio_button_selector"
+                                android:textColor="@drawable/radio_button_text_selector"/>
+
+                        </RadioGroup>
+
+                        <!--Create Empty Views to balance weight-->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <!--The Submit Button-->
+                <ma.ensaf.veryempty.widget.MaterialRippleLayout
+                    style="@style/RippleStyleWhite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_large"
+                    android:layout_below="@+id/input_phone_number_layout">
+
+                    <Button
+                        android:id="@+id/button_request_blood"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:padding="@dimen/spacing_large"
+                        app:fontFamily="@fonts/montserrat_medium"
+                        android:background="@drawable/rect_button_red_background"/>
+
+                </ma.ensaf.veryempty.widget.MaterialRippleLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>
