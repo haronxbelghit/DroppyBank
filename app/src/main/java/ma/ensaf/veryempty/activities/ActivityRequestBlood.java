@@ -26,7 +26,7 @@ public class ActivityRequestBlood extends BaseActivity {
 
     String[] persons = {"Select Person Type","Friend", "Family", "Relative", "Patient", "Work Colleague", "Anonymous"};
 
-    String[] cities = {"Select City","Mumbai", "Bengaluru", "Chennai", "Kolkata", "New Delhi", "Sorat"};
+    String[] cities = {"Select City","Casablanca", "Fes", "Meknes", "Rabat", "Tangier", "Oujda","Marrkech","Tetuan","Laayoune"};
 
     private View parent_view;
 

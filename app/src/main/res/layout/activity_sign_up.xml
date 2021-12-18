@@ -6,17 +6,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F7F7F7"
-
-        >
-
+        android:background="#F7F7F7">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
-            >
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:theme="@style/ArrowToolbarStyle"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Make a new account"
+                    android:textColor="@color/be_hero_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@fonts/montserrat_bold" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <FrameLayout
                 android:id="@+id/layoutImage"
@@ -26,8 +44,8 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imageProfile"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:background="@drawable/background_image"
                     android:scaleType="centerCrop"
                     app:riv_oval="true" />
@@ -43,6 +61,7 @@
                     android:textStyle="bold"
                     app:fontFamily="@fonts/montserrat_medium" />
             </FrameLayout>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -185,22 +204,22 @@
                 style="@style/Widget.AppCompat.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:dropDownWidth="match_parent"
-                android:minHeight="?attr/actionBarSize"
                 android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/spacing_large"
                 android:layout_marginRight="40dp"
-                app:fontFamily="@fonts/montserrat_regular"
-                android:paddingTop="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:background="@drawable/spinner_round_bg_white"
+                android:dropDownWidth="match_parent"
+                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                android:minHeight="?attr/actionBarSize"
                 android:paddingLeft="@dimen/spacing_xlarge"
+                android:paddingTop="@dimen/spacing_large"
                 android:paddingRight="@dimen/spacing_xlarge"
                 android:paddingBottom="@dimen/spacing_large"
-                android:textColor="@color/be_hero_dark_grey"
                 android:popupBackground="@android:color/white"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:background="@drawable/spinner_round_bg_white"
                 android:stateListAnimator="@drawable/spinner_anim"
-                android:layout_marginBottom="@dimen/spacing_large"
-                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight" />
+                android:textColor="@color/be_hero_dark_grey"
+                app:fontFamily="@fonts/montserrat_regular" />
 
             <Button
                 android:layout_width="match_parent"
@@ -216,6 +235,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:fontFamily="@fonts/montserrat_medium" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -233,8 +253,7 @@
                     android:layout_marginRight="10dp"
                     android:text="Already have an account?"
 
-                    app:fontFamily="@fonts/montserrat_medium"
-                    />
+                    app:fontFamily="@fonts/montserrat_medium" />
 
                 <TextView
                     android:id="@+id/registerLink"

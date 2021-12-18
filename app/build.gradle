@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -42,5 +43,7 @@ dependencies {
     implementation 'com.bigbangbutton:editcodeview:1.0.6'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
-    implementation 'com.makeramen:roundedimageview:2.3.0'
+    //firebase dependencies
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
+
 }
