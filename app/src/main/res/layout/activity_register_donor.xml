@@ -58,6 +58,7 @@
                     android:paddingRight="@dimen/spacing_mxlarge"
                     android:background="@drawable/rect_silver_background" />
 
+
                 <EditText
                     android:id="@+id/input_email"
                     android:layout_width="match_parent"

@@ -30,10 +30,13 @@ public class ActivityRegister extends BaseActivity {
 
         // make status transparent
         Tools.setStatusBarTransparent(this);
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 
-        // go to the register activity
-        binding.mobilePhoneLayout.setOnClickListener(v -> ActivityPhoneRegistration.start(activityContext));
+        setListeners();
+    }
+
+    private void setListeners()  {
+        binding.registerLink.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SignUpActivity.class)));
+        binding.signInLayout.setOnClickListener(v ->startActivity(new Intent(getApplicationContext(),SignInActivity.class)));
     }
 }
