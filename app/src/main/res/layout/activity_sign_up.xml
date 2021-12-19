@@ -56,10 +56,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="add image"
-                    android:textColor="@color/grey_hard"
                     android:textSize="10dp"
                     android:textStyle="bold"
-                    app:fontFamily="@fonts/montserrat_medium" />
+                    android:textColor="@color/be_hero_dark_grey"
+                    app:fontFamily="@fonts/montserrat_regular" />
             </FrameLayout>
 
             <RelativeLayout
@@ -82,8 +82,9 @@
                     android:paddingLeft="17dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="17dp"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    app:fontFamily="@fonts/montserrat_medium" />
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <ImageView
                     android:id="@+id/userIcon"
@@ -116,8 +117,9 @@
                     android:paddingLeft="17dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="17dp"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    app:fontFamily="@fonts/montserrat_medium" />
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <ImageView
                     android:id="@+id/emailIcon"
@@ -150,8 +152,9 @@
                     android:paddingLeft="17dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="17dp"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    app:fontFamily="@fonts/montserrat_medium" />
+                    app:fontFamily="@fonts/montserrat_regular" />
 
 
                 <ImageView
@@ -184,8 +187,9 @@
                     android:paddingLeft="17dp"
                     android:paddingTop="15dp"
                     android:paddingBottom="17dp"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    app:fontFamily="@fonts/montserrat_medium" />
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <ImageView
                     android:id="@+id/phoneIcon"
@@ -221,11 +225,16 @@
                 android:textColor="@color/be_hero_dark_grey"
                 app:fontFamily="@fonts/montserrat_regular" />
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:animateLayoutChanges="true">
             <Button
+                android:id="@+id/signUpBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp"
                 android:background="@drawable/rect_button_red_background"
                 android:paddingLeft="13dp"
@@ -235,12 +244,20 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:fontFamily="@fonts/montserrat_medium" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+
+        </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="50dp">
 
 

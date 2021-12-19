@@ -90,11 +90,16 @@
                     android:src="@drawable/ic_ri_lock_password_line" />
             </RelativeLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:animateLayoutChanges="true">
             <Button
+                android:id="@+id/signInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="40dp"
                 android:layout_marginRight="50dp"
                 android:background="@drawable/rect_button_red_background"
                 android:paddingLeft="13dp"
@@ -104,6 +109,13 @@
                 android:text="Sign in"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+            </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
