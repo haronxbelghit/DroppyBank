@@ -52,6 +52,7 @@
                 android:layout_gravity="center">
 
                 <LinearLayout
+                    android:id="@+id/facebookBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/blue_round_button"
@@ -137,10 +138,10 @@
                 android:layout_gravity="center">
 
                 <LinearLayout
-                    android:id="@+id/mobile_phone_layout"
+                    android:id="@+id/signInLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/grey_stroke_round_button"
+                    android:background="@drawable/rect_button_red_background"
                     android:minWidth="250dp"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/spacing_mlarge"
@@ -153,8 +154,8 @@
                         android:layout_height="20dp"
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginRight="@dimen/spacing_large"
-                        android:src="@android:drawable/ic_dialog_dialer"
-                        app:tint="@color/md_grey_600" />
+                        android:src="@drawable/ic_ant_design_user_outlined"
+                        app:tint="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -162,15 +163,49 @@
                         android:layout_marginLeft="@dimen/spacing_large"
                         android:layout_marginRight="@dimen/spacing_large"
                         android:gravity="center"
-                        android:text="Mobile Number"
-                        android:textColor="@color/finestTextColor"
+                        android:text="Sign In"
+                        android:textColor="@color/finestWhite"
                         app:fontFamily="@fonts/montserrat_regular" />
 
                 </LinearLayout>
 
+
             </ma.ensaf.veryempty.widget.MaterialRippleLayout>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp">
+
+
+                <TextView
+                    android:id="@+id/regiterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginRight="10dp"
+                    android:text="you dont have an account?"
+
+                    />
+
+                <TextView
+                    android:id="@+id/registerLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/regiterText"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="17dp"
+                    android:text="Register now"
+                    android:textColor="#FF217A" />
+
+            </RelativeLayout>
+
         </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
