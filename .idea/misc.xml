@@ -104,7 +104,9 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/drawable/spinner_round_bg.xml" value="0.1125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/drawable/spinner_round_bg_white.xml" value="0.1125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_donors.xml" value="0.1" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_facebook_auth.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_google_auth.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_phone_registration.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_register_donor.xml" value="0.22" />
@@ -113,6 +115,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_sign_up.xml" value="0.292259083728278" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/fragment_welcome_slide1.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/home_content_top.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.20416666666666666" />
       </map>
     </option>
