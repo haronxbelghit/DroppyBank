@@ -34,16 +34,12 @@ public class SignInActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         //////////SETTING THE PREFERENCEMANAGER
         preferenceManager = new PreferenceManager(getApplicationContext());
-        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN)) {
-            Intent intent=new Intent(getApplicationContext(),ActivityHome.class);
-            startActivity(intent);
-            finish();
-        }
+
         setListeners();
     }
 
     private void setListeners() {
-        binding.registerLink.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),ActivityPhoneRegistration.class)));
+        binding.registerLink.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SignUpActivity.class)));
         binding.signInButton.setOnClickListener(v -> {
             if(isValidSignInDetails()) {
                 signIn();

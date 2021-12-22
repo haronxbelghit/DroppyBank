@@ -13,16 +13,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.data.Tools;
 import ma.ensaf.veryempty.databinding.ActivityRegisterBinding;
+import ma.ensaf.veryempty.utils.Constants;
 import ma.ensaf.veryempty.utils.PreferenceManager;
 
 public class ActivityRegister extends BaseActivity {
 
     private static final String TAG = ActivityRegister.class.getSimpleName();
     ActivityRegisterBinding binding;
-    public static final String FACEBOOK_TAG="FACEBOOK";
-    private static final int RC_SIGN_IN=12345;
     protected PreferenceManager preferenceManager;
-    protected FirebaseAuth mAuth;
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityRegister.class);
@@ -41,8 +40,11 @@ public class ActivityRegister extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         //facebook setting
         preferenceManager = new PreferenceManager(getApplicationContext());
-        mAuth = FirebaseAuth.getInstance();
-
+        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_IN)) {
+            Intent intent=new Intent(getApplicationContext(),ActivityHome.class);
+            startActivity(intent);
+            finish();
+        }
         setListeners();
     }
 
@@ -54,6 +56,10 @@ public class ActivityRegister extends BaseActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         });
-
+        binding.googleBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),GoogleAuthActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        });
     }
 }
