@@ -1,6 +1,5 @@
 # merksterz
 TODO:
--add the damn logout btn
--move the code that verifies if the ser is signed in to the register activity
+-Add a personal profile page that retrives info from database
 -merge with master <3
 -kys
