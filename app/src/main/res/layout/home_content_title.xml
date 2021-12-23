@@ -22,14 +22,14 @@
                 android:id="@+id/explore_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:text="Explore Latest Feed"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="Explore Live Feed"
+                android:textAllCaps="true"
                 android:textColor="@color/be_hero_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:fontFamily="@fonts/montserrat_bold" />
 
             <ma.ensaf.veryempty.widget.MaterialRippleLayout

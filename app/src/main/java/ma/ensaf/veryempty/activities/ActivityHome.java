@@ -4,13 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.facebook.login.LoginManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,7 +29,7 @@ import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityHomeBinding;
 import ma.ensaf.veryempty.utils.PreferenceManager;
 
-public class ActivityHome extends BaseActivity {
+public class ActivityHome extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = ActivityHome.class.getSimpleName();
 
@@ -33,6 +37,7 @@ public class ActivityHome extends BaseActivity {
     private PreferenceManager preferenceManager;
     private View parent_view;
     private PostsAdapter postsAdapter;
+    BottomNavigationView bottomNavigationView;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityHome.class);
@@ -51,7 +56,10 @@ public class ActivityHome extends BaseActivity {
 
         initViews();
         setListeners();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
     private void setListeners() {
@@ -112,5 +120,25 @@ public class ActivityHome extends BaseActivity {
             }
         });
     }
-}
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.person:
+                intent = new Intent(this, ActivityUserProfile.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.home:
+                Toast.makeText(this, "This is Home!", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.settings:
+                intent = new Intent(this, ActivityRequestBlood.class);
+                startActivity(intent);
+                return true;
+        }
+        return false;
+    }
+}

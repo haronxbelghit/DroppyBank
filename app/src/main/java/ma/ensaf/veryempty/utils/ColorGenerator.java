@@ -7,7 +7,6 @@ import java.util.Random;
 public class ColorGenerator {
 
     public static ColorGenerator DEFAULT;
-
     public static ColorGenerator MATERIAL;
 
     static {
