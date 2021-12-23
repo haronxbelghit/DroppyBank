@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "886575840000-bs1dit12gfpaauiq5n5eg1m772jp8423.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ma.ensaf.veryempty",
+            "certificate_hash": "fdf69d62626b817f4572ca630ef112d892f14cfb"
+          }
+        },
+        {
           "client_id": "886575840000-dau1549iq492l679esc4pmd41f3clqgf.apps.googleusercontent.com",
           "client_type": 3
         }

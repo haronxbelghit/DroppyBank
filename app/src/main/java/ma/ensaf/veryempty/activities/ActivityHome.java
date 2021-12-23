@@ -10,19 +10,27 @@ import android.widget.ImageView;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.facebook.login.LoginManager;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.PostsAdapter;
 import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityHomeBinding;
+import ma.ensaf.veryempty.utils.PreferenceManager;
 
 public class ActivityHome extends BaseActivity {
 
     private static final String TAG = ActivityHome.class.getSimpleName();
 
     ActivityHomeBinding binding;
-
+    private PreferenceManager preferenceManager;
     private View parent_view;
     private PostsAdapter postsAdapter;
 
@@ -38,10 +46,26 @@ public class ActivityHome extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         parent_view = findViewById(android.R.id.content);
-
+        preferenceManager = new PreferenceManager(getApplicationContext());
         initToolbar(binding.toolbar,false);
 
         initViews();
+        setListeners();
+
+    }
+
+    private void setListeners() {
+        binding.logoutBtn.setOnClickListener(v -> signOut());
+    }
+
+    private void signOut() {
+        showToast("signing out...",false);
+        preferenceManager.clear();
+        startActivity(new Intent(getApplicationContext(),ActivityRegister.class));
+        //might generate errors
+        LoginManager.getInstance().logOut();
+        FirebaseAuth.getInstance().signOut();
+        finish();
 
     }
 
