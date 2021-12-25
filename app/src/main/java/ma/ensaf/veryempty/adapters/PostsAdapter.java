@@ -117,11 +117,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 mOnItemClickListener.onItemClick(view, position, obj);
             }
         });
-        holder.binding.actionCommentImageView.setOnClickListener(view -> {
+        /* holder.binding.actionCommentImageView.setOnClickListener(view -> {
             if (mOnItemClickListener != null) {
                 mOnItemClickListener.onItemClick(view, position, obj);
             }
-        });
+        });*/
     }
 
     /**

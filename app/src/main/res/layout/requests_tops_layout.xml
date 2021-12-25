@@ -32,13 +32,13 @@
                     android:id="@+id/requests_totals_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="976"
-                    android:textSize="26sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.10"
                     android:layout_alignParentTop="true"
+                    android:gravity="center"
+                    android:letterSpacing="0.10"
+                    android:text="976"
                     android:textColor="@android:color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
                     app:fontFamily="@fonts/montserrat_light" />
 
                 <TextView
@@ -55,51 +55,27 @@
             </RelativeLayout>
 
             <ma.ensaf.veryempty.widget.MaterialRippleLayout
+                android:id="@+id/requestBtn"
+                style="@style/RippleStyleBlack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.25"
-                style="@style/RippleStyleBlack"
+                android:layout_marginStart="@dimen/spacing_mmiddle"
                 android:layout_marginLeft="@dimen/spacing_mmiddle"
-                android:layout_marginStart="@dimen/spacing_mmiddle">
+                android:layout_weight="1.25"
+                >
 
-                <RelativeLayout
-                    android:id="@+id/add_request_ripple_layout"
+                <Button
+                    android:id="@+id/button_request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/spacing_mmiddle"
-                    android:background="@drawable/round_white_button_bg">
-
-                    <ImageView
-                        android:id="@+id/add_request_image_view"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        app:srcCompat="@drawable/ic_add"
-                        app:tint="@color/md_grey_600"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:padding="@dimen/spacing_medium"
-                        android:layout_marginLeft="@dimen/spacing_medium"
-                        android:layout_marginRight="@dimen/spacing_medium"
-                        android:background="@drawable/circle_silver_stroke"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:text="Add Request"
-                        android:layout_centerVertical="true"
-                        app:fontFamily="@fonts/montserrat_bold"
-                        android:textColor="@color/be_hero_dark_grey"
-                        android:layout_marginLeft="@dimen/spacing_medium"
-                        android:layout_marginRight="@dimen/spacing_medium"
-                        android:layout_toEndOf="@+id/add_request_image_view"
-                        android:layout_toRightOf="@+id/add_request_image_view"/>
-
-                </RelativeLayout>
+                    android:text="Add Request"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    app:fontFamily="@fonts/montserrat_bold"
+                    android:paddingTop="@dimen/spacing_mmiddle"
+                    android:textColor="@color/be_hero_dark_grey"
+                    android:paddingBottom="@dimen/spacing_mmiddle"
+                    android:background="@drawable/round_white_button_bg"/>
 
             </ma.ensaf.veryempty.widget.MaterialRippleLayout>
 

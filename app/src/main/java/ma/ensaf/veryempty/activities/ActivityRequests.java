@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +26,6 @@ public class ActivityRequests extends BaseActivity {
     private static final String TAG = ActivityRequests.class.getSimpleName();
 
     ActivityRequestsBinding binding;
-
     private View parent_view;
 
     private RequestsAdapter requestsAdapter;
@@ -59,6 +60,9 @@ public class ActivityRequests extends BaseActivity {
         // clicking the requests list
         requestsAdapter.SetOnItemClickListener((v, position, obj) -> {
             ActivityUserProfile.start(activityContext,obj);
+        });
+        binding.requestsTopLayout.buttonRequest.setOnClickListener(v -> {
+            ActivityRequestBlood.start(activityContext);
         });
     }
 
