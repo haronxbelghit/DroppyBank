@@ -47,12 +47,12 @@
                         android:id="@+id/pers_total_donations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="4"
-                        android:textSize="20sp"
                         android:gravity="center"
+                        android:text="4"
                         android:textAllCaps="true"
-                        app:fontFamily="@fonts/montserrat_light"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20sp"
+                        app:fontFamily="@fonts/montserrat_light" />
 
                     <TextView
                         android:layout_width="match_parent"

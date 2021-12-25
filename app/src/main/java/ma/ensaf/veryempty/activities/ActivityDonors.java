@@ -3,6 +3,7 @@ package ma.ensaf.veryempty.activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -14,11 +15,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.DonorsAdapter;
 import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityDonorsBinding;
+import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.HeaderItem;
 import ma.ensaf.veryempty.models.RowItem;
 import ma.ensaf.veryempty.models.Users;
@@ -30,16 +34,19 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ActivityDonors extends BaseActivity {
 
     private static final String TAG = ActivityDonors.class.getSimpleName();
-
+    private FirebaseFirestore database;
     ActivityDonorsBinding binding;
 
     private View parent_view;
 
     private DonorsAdapter donorsAdapter;
+    List<Users>  usersList;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityDonors.class);
@@ -57,6 +64,8 @@ public class ActivityDonors extends BaseActivity {
         initToolbar(binding.toolbar,true);
 
         bindRecyclerView();
+        usersList=getDonorsFromDb();
+
     }
 
     private void bindRecyclerView() {
@@ -65,12 +74,14 @@ public class ActivityDonors extends BaseActivity {
         binding.donorsRecyclerView.setHasFixedSize(true);
         binding.donorsRecyclerView.setNestedScrollingEnabled(false);
         //set data and list adapter
-        donorsAdapter = new DonorsAdapter(activityContext, null);
+        donorsAdapter = new DonorsAdapter(activityContext, null); //items null??
         binding.donorsRecyclerView.setAdapter(donorsAdapter);
 
         // clicking the ask for help button
         donorsAdapter.SetOnItemClickListener((v, position, obj) -> {
-            Log.e("position", ((RowItem) obj).getUsers().getName());
+            String number = ((RowItem) obj).getUsers().getPhoneNumber();
+            Uri uri = Uri.parse("tel:"+number);
+            startActivity(new Intent(Intent.ACTION_CALL, uri ));
         });
     }
 
@@ -110,14 +121,50 @@ public class ActivityDonors extends BaseActivity {
                 consolidatedList.add(rowItem);
             }
         }
-
         donorsAdapter.setUsersListItemList(consolidatedList);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        groupDataIntoHashMap(Constants.getUsers(activityContext));
+        //groupDataIntoHashMap(usersList);
+        //donorsAdapter.notifyDataSetChanged();
+
+    }
+
+
+    public List<Users> getDonorsFromDb() {
+        database = FirebaseFirestore.getInstance();
+        List<Users> users= new ArrayList<>();
+        database.collection(ma.ensaf.veryempty.utils.Constants.KEY_COLLECTION_DONATIONS)
+                .get()
+                .addOnCompleteListener(task ->  {
+                    if(task.isSuccessful() && task.getResult() != null) {
+                        int i=0;
+                        for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                            //i++;
+                            //Users user = new Users();
+                            /*user.setId(i);
+                            user.setName(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_NAME));
+                            user.setLocation(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_CITY));
+                            user.setPhoneNumber(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_CONTACT_PHONE));
+                            user.setBloodGroup(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_BLOOD_TYPE));
+                            user.setLastDonatedDate(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_DATETIME));
+                            user.setImage(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_IMAGE));*/
+                            i++;
+                            Users user = new Users(i,queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_NAME)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_IMAGE)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_CITY)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_CONTACT_PHONE),
+                                    queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_BLOOD_TYPE),
+                                    queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_DATETIME));
+                            users.add(user);
+                        }
+                    }
+                    groupDataIntoHashMap(users);
+                });
+        return users;
     }
 
     @Override

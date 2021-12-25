@@ -2,6 +2,9 @@ package ma.ensaf.veryempty.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +19,18 @@ import java.util.List;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.databinding.ItemRequestsBinding;
+import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Users;
 
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHolder> {
 
-    private List<Users> filtered_items;
+    private List<CUsers> filtered_items;
 
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, Users obj);
+        void onItemClick(View view, int position, CUsers obj);
     }
 
     public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
@@ -42,12 +46,12 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RequestsAdapter(Context ctx, List<Users> items) {
+    public RequestsAdapter(Context ctx, List<CUsers> items) {
         this.ctx = ctx;
         filtered_items = items;
     }
 
-    public void setUsersList(List<Users> items) {
+    public void setUsersList(List<CUsers> items) {
         // then update the items
         filtered_items = items;
         notifyDataSetChanged();
@@ -64,7 +68,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        final Users obj = filtered_items.get(position);
+        final CUsers obj = filtered_items.get(position);
 
         // set the views
         holder.binding.userNameTextView.setText(obj.getName());

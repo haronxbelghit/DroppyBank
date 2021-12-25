@@ -142,7 +142,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
                 return true;
 
             case R.id.settings:
-                intent = new Intent(getApplicationContext(), ActivityRequestBlood.class);
+                intent = new Intent(getApplicationContext(), ActivityRegisterDonor.class);
                 startActivity(intent);
                 return true;
         }

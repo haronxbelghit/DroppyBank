@@ -66,6 +66,8 @@ public class ActivityPersProfile extends BaseActivity {
     }
 
     private void initViews() {
+        TextView donCount = findViewById(R.id.pers_total_donations);
+        donCount.setText( String.valueOf(preferenceManager.getInt(Constants.KEY_COUNT_DONATIONS)));
         binding.usernameTextView.setText(preferenceManager.getString(Constants.KEY_NAME));
         byte[] bytes = Base64.decode(preferenceManager.getString(Constants.KEY_IMAGE),Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);

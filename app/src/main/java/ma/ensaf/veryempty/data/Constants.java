@@ -3,24 +3,32 @@ package ma.ensaf.veryempty.data;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.view.View;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Posts;
 import ma.ensaf.veryempty.models.Users;
 import ma.ensaf.veryempty.R;
+import ma.ensaf.veryempty.utils.PreferenceManager;
 
 public class Constants {
-
     private static Random rnd = new Random();
 
-    // demo users
+
     @SuppressLint("Recycle")
-    public static List<Users> getUsers(Context ctx) {
-        List<Users> items = new ArrayList<>();
+    public static List<CUsers> getUsers(Context ctx) {
+
+        List<CUsers> items = new ArrayList<>();
+
+
         String[] names_arr = ctx.getResources().getStringArray(R.array.people_names);
         TypedArray imgs_arr = ctx.getResources().obtainTypedArray(R.array.people_photos);
         String[] locations_arr = ctx.getResources().getStringArray(R.array.people_locations);
@@ -28,7 +36,7 @@ public class Constants {
         String[] dates_arr = ctx.getResources().getStringArray(R.array.last_donation_dates);
 
         for (int i = 0; i < names_arr.length ; i++) {
-            Users item = new Users(i+1,names_arr[i], imgs_arr.getResourceId(i, -1), getRandomValue(ctx, locations_arr), "+91 "+String.valueOf(getRandomIndex(rnd,731234567,732234567)), blood_groups_arr[i], dates_arr[i]);
+            CUsers item = new CUsers(i+1,names_arr[i], imgs_arr.getResourceId(i, -1), getRandomValue(ctx, locations_arr), "+91 "+String.valueOf(getRandomIndex(rnd,731234567,732234567)), blood_groups_arr[i], dates_arr[i]);
             items.add(item);
         }
         Collections.shuffle(items, rnd);
@@ -40,7 +48,7 @@ public class Constants {
     public static List<Posts> getPosts(Context ctx) {
         List<Posts> items = new ArrayList<>();
 
-        List<Users> users_arr = getUsers(ctx);
+        List<CUsers> users_arr = getUsers(ctx);
         String[] time_arr = ctx.getResources().getStringArray(R.array.post_dates);
         String[] content_arr = ctx.getResources().getStringArray(R.array.post_content);
         TypedArray imgs_arr = ctx.getResources().obtainTypedArray(R.array.post_images);

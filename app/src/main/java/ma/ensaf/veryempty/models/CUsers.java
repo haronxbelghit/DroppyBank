@@ -3,19 +3,19 @@ package ma.ensaf.veryempty.models;
 import java.io.Serializable;
 
 @SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
-public class Users implements Serializable {
+public class CUsers implements Serializable {
     private int id;
     private String name;
-    private String image;
+    private int image;
     private String location;
     private String phoneNumber;
     private String bloodGroup;
     private String lastDonatedDate;
 
-    public Users() {
+    public CUsers() {
     }
 
-    public Users(int id, String name, String image, String location, String phoneNumber, String bloodGroup) {
+    public CUsers(int id, String name, int image, String location, String phoneNumber, String bloodGroup) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -24,7 +24,7 @@ public class Users implements Serializable {
         this.bloodGroup = bloodGroup;
     }
 
-    public Users(int id, String name, String image, String location, String phoneNumber, String bloodGroup, String lastDonatedDate) {
+    public CUsers(int id, String name, int image, String location, String phoneNumber, String bloodGroup, String lastDonatedDate) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -50,11 +50,11 @@ public class Users implements Serializable {
         this.name = name;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
@@ -90,4 +90,3 @@ public class Users implements Serializable {
         this.lastDonatedDate = lastDonatedDate;
     }
 }
-

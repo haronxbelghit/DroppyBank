@@ -3,7 +3,10 @@ package ma.ensaf.veryempty.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +22,7 @@ import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.PostsAdapter;
 import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityUserProfileBinding;
+import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Posts;
 import ma.ensaf.veryempty.models.Users;
 
@@ -32,7 +36,7 @@ public class ActivityUserProfile extends BaseActivity {
     private PostsAdapter postsAdapter;
     private Users parsedUserObj;
 
-    public static void start(Context context, Users obj) {
+    public static void start(Context context, CUsers obj) {
         Intent intent = new Intent(context, ActivityUserProfile.class);
         intent.putExtra(Constants.USER_EXTRA_OBJECT, obj);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -62,7 +66,9 @@ public class ActivityUserProfile extends BaseActivity {
 
     private void initViews() {
         binding.usernameTextView.setText(parsedUserObj.getName());
-        binding.userContentTop.userImageView.setImageResource(parsedUserObj.getImage());
+        byte[] bytes = Base64.decode(parsedUserObj.getImage(),Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        binding.userContentTop.userImageView.setImageBitmap(bitmap);;
         binding.userContentTop.userLocationTextView.setText(parsedUserObj.getLocation());
         binding.userContentTop.userDescriptionTextView.setText(activityContext.getString(R.string.medium_lorem_ipsum));
     }
