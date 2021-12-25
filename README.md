@@ -1,9 +1,5 @@
 # merksterz
-TO DO:
--add the damn logout btn
--add google provider
--move the code that verifies if the ser is signed in to the register activity
+TODO:
+-Add a personal profile page that retrives info from database
 -merge with master <3
 -kys
--
-

@@ -4,13 +4,18 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.facebook.login.LoginManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,7 +30,7 @@ import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityHomeBinding;
 import ma.ensaf.veryempty.utils.PreferenceManager;
 
-public class ActivityHome extends BaseActivity {
+public class ActivityHome extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = ActivityHome.class.getSimpleName();
 
@@ -33,7 +38,7 @@ public class ActivityHome extends BaseActivity {
     private PreferenceManager preferenceManager;
     private View parent_view;
     private PostsAdapter postsAdapter;
-
+    BottomNavigationView bottomNavigationView;
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityHome.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -48,10 +53,13 @@ public class ActivityHome extends BaseActivity {
         parent_view = findViewById(android.R.id.content);
         preferenceManager = new PreferenceManager(getApplicationContext());
         initToolbar(binding.toolbar,false);
-
+        //ImageView share = findViewById(R.id.action_like_image_view);
         initViews();
         setListeners();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
     private void setListeners() {
@@ -104,13 +112,40 @@ public class ActivityHome extends BaseActivity {
                     }
                     break;
                 case R.id.action_share_image_view:
-                    Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
+                    //Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    String shareBody = "Hey, I think you might be interested in this Post from the Droppy App \"Link_to_Post\"";
+                    String shareSub = "DROPPY Post";
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
                     break;
-                case R.id.action_comment_image_view:
+                /*case R.id.action_comment_image_view:
                     Snackbar.make(parent_view, "Comment Clicked...", Snackbar.LENGTH_LONG).show();
-                    break;
+                    break;*/
             }
         });
     }
-}
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.person:
+                intent = new Intent(this, ActivityUserProfile.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.home:
+                Toast.makeText(this, "This is Home!", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.settings:
+                intent = new Intent(this, ActivityRequestBlood.class);
+                startActivity(intent);
+                return true;
+        }
+        return false;
+    }
+}

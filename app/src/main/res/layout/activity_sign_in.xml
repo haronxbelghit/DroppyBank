@@ -126,14 +126,14 @@
 
 
                 <TextView
-                    app:fontFamily="@fonts/montserrat_medium"
                     android:id="@+id/regiterText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="17dp"
                     android:layout_marginRight="10dp"
-                    android:text="you dont have an account?"
+                    android:text="You dont have an account?"
+                    app:fontFamily="@fonts/montserrat_medium"
 
                     />
 
