@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         parent_view = findViewById(android.R.id.content);
 
         // timer task
-        new CountDownTimer(3000, 1000) {
+        new CountDownTimer(2000, 1000) {
             public void onTick(long millisUntilFinished) {
 
             }

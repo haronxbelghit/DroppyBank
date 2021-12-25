@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
     private View parent_view;
     private PostsAdapter postsAdapter;
     BottomNavigationView bottomNavigationView;
-
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityHome.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -53,7 +53,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
         parent_view = findViewById(android.R.id.content);
         preferenceManager = new PreferenceManager(getApplicationContext());
         initToolbar(binding.toolbar,false);
-
+        //ImageView share = findViewById(R.id.action_like_image_view);
         initViews();
         setListeners();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -112,11 +112,18 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
                     }
                     break;
                 case R.id.action_share_image_view:
-                    Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
+                    //Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    String shareBody = "Hey, I think you might be interested in this Post from the Droppy App \"Link_to_Post\"";
+                    String shareSub = "DROPPY Post";
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
                     break;
-                case R.id.action_comment_image_view:
+                /*case R.id.action_comment_image_view:
                     Snackbar.make(parent_view, "Comment Clicked...", Snackbar.LENGTH_LONG).show();
-                    break;
+                    break;*/
             }
         });
     }

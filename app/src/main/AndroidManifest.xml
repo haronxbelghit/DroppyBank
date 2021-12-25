@@ -20,6 +20,12 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:theme,android:icon">
         <activity
+            android:name=".activities.ActivityEditPersInfo"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ActivityPersProfile"
+            android:exported="false" />
+        <activity
             android:name=".activities.GoogleAuthActivity"
             android:exported="false" />
         <activity
