@@ -6,5 +6,6 @@ NOTES:
 TODO:
 -create new post activ
 -make the ui tweaks
--make posts nd requests dynamic
+-make posts dynamic
+-add delete button to delete all user requests nd another for donation
 -add the menu to profile nd donors/requests activs too 

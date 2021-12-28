@@ -19,18 +19,17 @@ import java.util.List;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.databinding.ItemRequestsBinding;
-import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Users;
 
 public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHolder> {
 
-    private List<CUsers> filtered_items;
+    private List<Users> filtered_items;
 
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position, CUsers obj);
+        void onItemClick(View view, int position, Users obj);
     }
 
     public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
@@ -46,12 +45,12 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RequestsAdapter(Context ctx, List<CUsers> items) {
+    public RequestsAdapter(Context ctx, List<Users> items) {
         this.ctx = ctx;
         filtered_items = items;
     }
 
-    public void setUsersList(List<CUsers> items) {
+    public void setUsersList(List<Users> items) {
         // then update the items
         filtered_items = items;
         notifyDataSetChanged();
@@ -68,11 +67,13 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        final CUsers obj = filtered_items.get(position);
+        final Users obj = filtered_items.get(position);
 
         // set the views
         holder.binding.userNameTextView.setText(obj.getName());
-        holder.binding.userImageView.setImageResource(obj.getImage());
+        byte[] bytes = Base64.decode(obj.getImage(),Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        holder.binding.userImageView.setImageBitmap(bitmap);
         holder.binding.userLocationTextView.setText(obj.getLocation());
         holder.binding.userPhoneNumberTextView.setText(obj.getPhoneNumber());
         holder.binding.bloodGroupTextView.setText(obj.getBloodGroup());

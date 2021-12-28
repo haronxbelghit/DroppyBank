@@ -28,6 +28,15 @@ public class Constants {
     public static final String KEY_GENDER = "gender";
     public static final String KEY_BLOOD_TYPE = "bloodType";
 
+    //request keys
+    public static final String KEY_COLLECTION_REQUESTS = "requests";
+    public static final String KEY_REQUESTER_ID = "requesterId";
+    public static final String KEY_REQUEST_DATETIME = "dateOfRequest";
+    public static final String KEY_REQ_BLOOD_TYPE = "bloodType";
+    public static final String KEY_REQ_PERSON_TYPE = "personType";
+
+
+
 
 
 

@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 import androidx.databinding.DataBindingUtil;
@@ -24,6 +26,7 @@ import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityUserProfileBinding;
 import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Posts;
+import ma.ensaf.veryempty.models.RowItem;
 import ma.ensaf.veryempty.models.Users;
 
 public class ActivityUserProfile extends BaseActivity {
@@ -36,7 +39,7 @@ public class ActivityUserProfile extends BaseActivity {
     private PostsAdapter postsAdapter;
     private Users parsedUserObj;
 
-    public static void start(Context context, CUsers obj) {
+    public static void start(Context context, Users obj) {
         Intent intent = new Intent(context, ActivityUserProfile.class);
         intent.putExtra(Constants.USER_EXTRA_OBJECT, obj);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -60,8 +63,17 @@ public class ActivityUserProfile extends BaseActivity {
 
         // show the data in the views
         initViews();
-
+        setListeners();
         bindRecyclerView();
+    }
+
+    private void setListeners() {
+        TextView contactBtn = findViewById(R.id.user_action_contact);
+        contactBtn.setOnClickListener(v -> {
+            String number =parsedUserObj.getPhoneNumber();
+            Uri uri = Uri.parse("tel:"+number);
+            startActivity(new Intent(Intent.ACTION_CALL, uri ));
+        });
     }
 
     private void initViews() {

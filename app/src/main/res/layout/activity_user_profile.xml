@@ -56,10 +56,10 @@
         <!--The content-->
         <include
             android:id="@+id/user_content_top"
+            layout="@layout/user_profile_content_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            layout="@layout/user_profile_content_layout"/>
+            android:layout_below="@+id/toolbar" />
 
         <!--the list of recent activity-->
         <LinearLayout

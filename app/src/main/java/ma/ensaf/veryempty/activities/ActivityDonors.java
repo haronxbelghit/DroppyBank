@@ -143,15 +143,6 @@ public class ActivityDonors extends BaseActivity {
                     if(task.isSuccessful() && task.getResult() != null) {
                         int i=0;
                         for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
-                            //i++;
-                            //Users user = new Users();
-                            /*user.setId(i);
-                            user.setName(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_NAME));
-                            user.setLocation(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_CITY));
-                            user.setPhoneNumber(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_CONTACT_PHONE));
-                            user.setBloodGroup(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_BLOOD_TYPE));
-                            user.setLastDonatedDate(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_DONATION_DATETIME));
-                            user.setImage(queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_IMAGE));*/
                             i++;
                             Users user = new Users(i,queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_NAME)
                                     , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_IMAGE)

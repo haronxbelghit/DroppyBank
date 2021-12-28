@@ -113,9 +113,11 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_register_donor.xml" value="0.22" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_request_blood.xml" value="0.22" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_requests.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_sign_up.xml" value="0.292259083728278" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_splash.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/activity_user_profile.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/fragment_welcome_slide1.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/home_content_title.xml" value="0.1359375" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/home_content_top.xml" value="0.20416666666666666" />
@@ -123,6 +125,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/item_donors_row.xml" value="0.5" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/pers_profile_content_layout.xml" value="0.22" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/merksterz/app/src/main/res/layout/user_profile_content_layout.xml" value="0.18177083333333333" />
       </map>
     </option>
   </component>

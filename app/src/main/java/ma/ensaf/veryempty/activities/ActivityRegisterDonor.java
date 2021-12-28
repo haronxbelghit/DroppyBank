@@ -156,7 +156,6 @@ public class ActivityRegisterDonor extends BaseActivity {
                             .addOnSuccessListener(unused -> {}
                                 )
                             .addOnFailureListener(e -> {
-                                loading(false);
                                 showToast("Unable to update user info",false);
                             });
 
