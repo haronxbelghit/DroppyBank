@@ -3,10 +3,15 @@ package ma.ensaf.veryempty.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 import androidx.databinding.DataBindingUtil;
@@ -19,7 +24,9 @@ import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.PostsAdapter;
 import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityUserProfileBinding;
+import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.Posts;
+import ma.ensaf.veryempty.models.RowItem;
 import ma.ensaf.veryempty.models.Users;
 
 public class ActivityUserProfile extends BaseActivity {
@@ -56,13 +63,24 @@ public class ActivityUserProfile extends BaseActivity {
 
         // show the data in the views
         initViews();
-
+        setListeners();
         bindRecyclerView();
+    }
+
+    private void setListeners() {
+        TextView contactBtn = findViewById(R.id.user_action_contact);
+        contactBtn.setOnClickListener(v -> {
+            String number =parsedUserObj.getPhoneNumber();
+            Uri uri = Uri.parse("tel:"+number);
+            startActivity(new Intent(Intent.ACTION_CALL, uri ));
+        });
     }
 
     private void initViews() {
         binding.usernameTextView.setText(parsedUserObj.getName());
-        binding.userContentTop.userImageView.setImageResource(parsedUserObj.getImage());
+        byte[] bytes = Base64.decode(parsedUserObj.getImage(),Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        binding.userContentTop.userImageView.setImageBitmap(bitmap);;
         binding.userContentTop.userLocationTextView.setText(parsedUserObj.getLocation());
         binding.userContentTop.userDescriptionTextView.setText(activityContext.getString(R.string.medium_lorem_ipsum));
     }

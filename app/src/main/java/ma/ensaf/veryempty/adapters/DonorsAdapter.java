@@ -1,6 +1,9 @@
 package ma.ensaf.veryempty.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ import ma.ensaf.veryempty.databinding.ItemDonorsRowBinding;
 import ma.ensaf.veryempty.models.HeaderItem;
 import ma.ensaf.veryempty.models.RowItem;
 import ma.ensaf.veryempty.models.UsersListItem;
+import ma.ensaf.veryempty.utils.Constants;
 import ma.ensaf.veryempty.utils.DateTimeUtils;
 
 public class DonorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -88,7 +92,9 @@ public class DonorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 RowViewHolder rViewHolder = (RowViewHolder)(holder);
                 // Populate date item data here
                 rViewHolder.binding.userNameTextView.setText(rowItem.getUsers().getName());
-                rViewHolder.binding.userImageView.setImageResource(rowItem.getUsers().getImage());
+                byte[] bytes = Base64.decode(rowItem.getUsers().getImage(),Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                rViewHolder.binding.userImageView.setImageBitmap(bitmap);
                 rViewHolder.binding.userLocationTextView.setText(rowItem.getUsers().getLocation());
                 rViewHolder.binding.bloodGroupTextView.setText(rowItem.getUsers().getBloodGroup());
 

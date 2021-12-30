@@ -14,14 +14,27 @@ import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.databinding.ActivityRequestBloodBinding;
+import ma.ensaf.veryempty.utils.Constants;
+import ma.ensaf.veryempty.utils.PreferenceManager;
 
 
 public class ActivityRequestBlood extends BaseActivity {
 
     private static final String TAG = ActivityRequestBlood.class.getSimpleName();
 
+    private String selectedBloodType;
+    private PreferenceManager preferenceManager;
+    private String selectedPersonType;
+    private String selectedCity;
     ActivityRequestBloodBinding binding;
 
     String[] persons = {"Select Person Type","Friend", "Family", "Relative", "Patient", "Work Colleague", "Anonymous"};
@@ -42,6 +55,7 @@ public class ActivityRequestBlood extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_request_blood);
         parent_view = findViewById(android.R.id.content);
+        preferenceManager = new PreferenceManager(getApplicationContext());
 
         initToolbar(binding.toolbar,true);
         setToolbarTitle(null);
@@ -55,7 +69,7 @@ public class ActivityRequestBlood extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position != 0){
-                    Toast.makeText(activityContext,parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+                    selectedPersonType =parent.getItemAtPosition(position).toString();
                 }
             }
 
@@ -74,7 +88,7 @@ public class ActivityRequestBlood extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position != 0){
-                    Toast.makeText(activityContext,parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
+                    selectedCity = parent.getItemAtPosition(position).toString();
                 }
             }
 
@@ -96,34 +110,100 @@ public class ActivityRequestBlood extends BaseActivity {
 
         // show next screen
         binding.buttonRequestBlood.setOnClickListener(v -> {
-            ActivityHome.start(activityContext);
+            submitRequest();
         });
+    }
+    private void loading(Boolean isLoading)  {
+        if(isLoading) {
+            binding.buttonRequestBlood.setVisibility(View.INVISIBLE);
+            binding.progressBar.setVisibility(View.VISIBLE);
+        } else {
+            binding.buttonRequestBlood.setVisibility(View.VISIBLE);
+            binding.progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+    private void submitRequest() {
+        loading(true);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReferenceUser=database.collection(Constants.KEY_COLLECTION_USERS).document(
+                preferenceManager.getString(Constants.KEY_USER_ID)
+        );
+        HashMap<String, Object> request = new HashMap<>();
+        request.put(Constants.KEY_REQUESTER_ID, preferenceManager.getString(Constants.KEY_USER_ID));
+        request.put(Constants.KEY_EMAIL, preferenceManager.getString(Constants.KEY_EMAIL));
+        request.put(Constants.KEY_PHONE,  preferenceManager.getString(Constants.KEY_PHONE));
+        request.put(Constants.KEY_BLOOD_TYPE, selectedBloodType);
+        request.put(Constants.KEY_REQ_PERSON_TYPE, selectedPersonType);
+        request.put(Constants.KEY_NAME, preferenceManager.getString(Constants.KEY_NAME));
+        request.put(Constants.KEY_CITY, selectedCity);
+        request.put(Constants.KEY_IMAGE, preferenceManager.getString(Constants.KEY_IMAGE));
+        Date dt = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String dtString = dateFormat.format(dt);
+        request.put(Constants.KEY_REQUEST_DATETIME, dtString);
+        database.collection(Constants.KEY_COLLECTION_REQUESTS)
+                .add(request)
+                .addOnSuccessListener(documentReference -> {
+                    loading(false);
+                    ///
+                    documentReferenceUser.update(Constants.KEY_IS_REQUESTER,true,
+                            Constants.KEY_COUNT_REQUESTS,preferenceManager.getInt(Constants.KEY_COUNT_REQUESTS)+1)
+                            .addOnSuccessListener(unused -> {}
+                            )
+                            .addOnFailureListener(e -> {
+                                showToast("Unable to update user info for request",false);
+                            });
+
+                    ///
+                    preferenceManager.putString(Constants.KEY_IS_REQUESTER,"true");
+                    preferenceManager.putInt(Constants.KEY_COUNT_REQUESTS,preferenceManager.getInt(Constants.KEY_COUNT_REQUESTS)+1);
+                    preferenceManager.putString(Constants.KEY_REQUEST_DATETIME,dtString );
+                    Intent intent = new Intent(getApplicationContext(),ActivityRequests.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+
+                })
+                .addOnFailureListener(exception -> {
+                    loading(false);
+                    showToast(exception.getMessage(),false);
+                });
+
     }
 
     private RadioGroup.OnCheckedChangeListener listener = (group, checkedId) -> {
         switch (group.getId()){
             case R.id.blood_group_radio_group_1:
+                selectedBloodType ="A+";
+
                 resetRadios(group.getId(),R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_2:
+                selectedBloodType ="A-";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_3:
+                selectedBloodType ="B+";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_4:
+                selectedBloodType ="B-";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_5:
+                selectedBloodType ="O+";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_6:
+                selectedBloodType ="O-";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_7,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_7:
+                selectedBloodType ="AB+";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_8);
                 break;
             case R.id.blood_group_radio_group_8:
+                selectedBloodType ="AB-";
                 resetRadios(group.getId(),R.id.blood_group_radio_group_1,R.id.blood_group_radio_group_2,R.id.blood_group_radio_group_3,R.id.blood_group_radio_group_4,R.id.blood_group_radio_group_5,R.id.blood_group_radio_group_6,R.id.blood_group_radio_group_7);
                 break;
         }

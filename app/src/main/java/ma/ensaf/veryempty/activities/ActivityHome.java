@@ -133,7 +133,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
         Intent intent;
         switch (item.getItemId()) {
             case R.id.person:
-                intent = new Intent(this, ActivityUserProfile.class);
+                intent = new Intent(getApplicationContext(), ActivityPersProfile.class);
                 startActivity(intent);
                 return true;
 
@@ -142,7 +142,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
                 return true;
 
             case R.id.settings:
-                intent = new Intent(this, ActivityRequestBlood.class);
+                intent = new Intent(getApplicationContext(), ActivityRegisterDonor.class);
                 startActivity(intent);
                 return true;
         }

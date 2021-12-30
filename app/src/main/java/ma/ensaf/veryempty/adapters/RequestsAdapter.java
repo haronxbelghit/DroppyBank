@@ -2,6 +2,9 @@ package ma.ensaf.veryempty.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +71,9 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.ViewHo
 
         // set the views
         holder.binding.userNameTextView.setText(obj.getName());
-        holder.binding.userImageView.setImageResource(obj.getImage());
+        byte[] bytes = Base64.decode(obj.getImage(),Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        holder.binding.userImageView.setImageBitmap(bitmap);
         holder.binding.userLocationTextView.setText(obj.getLocation());
         holder.binding.userPhoneNumberTextView.setText(obj.getPhoneNumber());
         holder.binding.bloodGroupTextView.setText(obj.getBloodGroup());

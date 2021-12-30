@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Posts implements Serializable {
     private int id;
-    private Users user;
+    private CUsers user;
     private String timeAgo;
     private String postContent;
     private int postImage;
@@ -13,7 +13,7 @@ public class Posts implements Serializable {
     public Posts() {
     }
 
-    public Posts(int id, Users user, String timeAgo, String postContent, int postImage) {
+    public Posts(int id, CUsers user, String timeAgo, String postContent, int postImage) {
         this.id = id;
         this.user = user;
         this.timeAgo = timeAgo;
@@ -21,7 +21,7 @@ public class Posts implements Serializable {
         this.postImage = postImage;
     }
 
-    public Posts(int id, Users user, String timeAgo, String postContent, int postImage, boolean isLiked) {
+    public Posts(int id, CUsers user, String timeAgo, String postContent, int postImage, boolean isLiked) {
         this.id = id;
         this.user = user;
         this.timeAgo = timeAgo;
@@ -38,11 +38,11 @@ public class Posts implements Serializable {
         this.id = id;
     }
 
-    public Users getUser() {
+    public CUsers getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(CUsers user) {
         this.user = user;
     }
 

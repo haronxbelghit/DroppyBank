@@ -43,13 +43,13 @@
                 android:padding="@dimen/spacing_large">
 
                 <EditText
-                    android:id="@+id/input_name"
+                    android:id="@+id/inputPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="Phone number"
                     android:maxLines="1"
                     android:textSize="14sp"
-                    android:inputType="text"
+                    android:inputType="phone"
                     android:minHeight="?attr/actionBarSize"
                     app:fontFamily="@fonts/montserrat_medium"
                     android:paddingTop="@dimen/spacing_large"
@@ -60,7 +60,7 @@
 
 
                 <EditText
-                    android:id="@+id/input_email"
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
@@ -225,7 +225,7 @@
                                 android:id="@+id/blood_group_radio_2"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="A+"
+                                android:text="A-"
                                 android:textSize="16sp"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
@@ -267,7 +267,7 @@
                                 android:id="@+id/blood_group_radio_4"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="B+"
+                                android:text="B-"
                                 android:textSize="16sp"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
@@ -339,7 +339,7 @@
                                 android:id="@+id/blood_group_radio_7"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="AB-"
+                                android:text="AB+"
                                 android:textSize="16sp"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
@@ -390,7 +390,7 @@
                     android:layout_marginTop="@dimen/spacing_xlarge">
 
                     <CheckBox
-                        android:id="@+id/contacts_visible_checkbox"
+                        android:id="@+id/conditions_checkbox"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:button="@drawable/checkbox_custom"
@@ -404,7 +404,7 @@
                         android:gravity="start|center_vertical"
                         android:textColor="@color/be_hero_dark"
                         app:fontFamily="@fonts/montserrat_medium"
-                        android:text="Do you want to make contact number visible for others" />
+                        android:text="You are in good general health, weigh at least 50kg, and are at least 16 years old" />
 
                 </LinearLayout>
 
@@ -416,6 +416,11 @@
                     android:layout_marginTop="@dimen/spacing_xlarge"
                     android:layout_below="@+id/input_phone_number_layout">
 
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:animateLayoutChanges="true">
                     <Button
                         android:id="@+id/button_register_donor"
                         android:layout_width="match_parent"
@@ -427,6 +432,14 @@
                         android:padding="@dimen/spacing_large"
                         app:fontFamily="@fonts/montserrat_medium"
                         android:background="@drawable/rect_button_red_background"/>
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:visibility="invisible"/>
+
+                </FrameLayout>
 
                 </ma.ensaf.veryempty.widget.MaterialRippleLayout>
 

@@ -106,6 +106,11 @@ public class SignUpActivity extends BaseActivity {
         user.put(Constants.KEY_PASSWORD, binding.passwordInput.getText().toString());
         user.put(Constants.KEY_PHONE, binding.phoneInput.getText().toString());
         user.put(Constants.KEY_CITY, binding.citySpinner.getSelectedItem().toString());
+        user.put(Constants.KEY_IS_REQUESTER, false);
+        user.put(Constants.KEY_IS_DONOR, false);
+        user.put(Constants.KEY_COUNT_DONATIONS, 0);
+        user.put(Constants.KEY_COUNT_REQUESTS, 0);
+        user.put(Constants.LAST_DONATION_DATE, "none");
         user.put(Constants.KEY_IMAGE, encodedImage);
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .add(user)
@@ -118,6 +123,11 @@ public class SignUpActivity extends BaseActivity {
                     preferenceManager.putString(Constants.KEY_PHONE, binding.phoneInput.getText().toString());
                     preferenceManager.putString(Constants.KEY_CITY, binding.citySpinner.getSelectedItem().toString());
                     preferenceManager.putString(Constants.KEY_IMAGE, encodedImage);
+                    preferenceManager.putBoolean(Constants.KEY_IS_DONOR,false);
+                    preferenceManager.putBoolean(Constants.KEY_IS_REQUESTER,false);
+                    preferenceManager.putInt(Constants.KEY_COUNT_DONATIONS,0);
+                    preferenceManager.putInt(Constants.KEY_COUNT_REQUESTS,0);
+                    preferenceManager.putString(Constants.KEY_DONATION_DATETIME,"none");
                     Intent intent = new Intent(getApplicationContext(),ActivityHome.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
