@@ -4,11 +4,18 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.facebook.CallbackManager;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.concurrent.Executor;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.data.Tools;
@@ -22,6 +29,10 @@ public class ActivityRegister extends BaseActivity {
     ActivityRegisterBinding binding;
     protected PreferenceManager preferenceManager;
 
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+    public boolean authinfo = true;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityRegister.class);
@@ -45,12 +56,53 @@ public class ActivityRegister extends BaseActivity {
             startActivity(intent);
             finish();
         }
+        /// Fingerprint
+        executor = ContextCompat.getMainExecutor(this);
+        biometricPrompt = new BiometricPrompt(this,
+                executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode,
+                                              @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(getApplicationContext(),
+                        "Authentication error: " + errString, Toast.LENGTH_SHORT)
+                        .show();
+                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(
+                    @NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(),"Authentication succeeded!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),ActivityHome.class));
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(getApplicationContext(), "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show();
+                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric Login")
+                .setSubtitle("Log in using your ")
+                .setNegativeButtonText("Use account password")
+                .build();
+
         setListeners();
     }
 
     private void setListeners()  {
         binding.registerLink.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SignUpActivity.class)));
-        binding.signInLayout.setOnClickListener(v ->startActivity(new Intent(getApplicationContext(),SignInActivity.class)));
+        binding.signInLayout.setOnClickListener(v ->{
+            // TODO: add already signed in condition here
+            biometricPrompt.authenticate(promptInfo);
+        });
         binding.facebookBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),FacebookAuthActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

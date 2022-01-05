@@ -8,53 +8,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="2"
-        android:background="@drawable/curves_splash">
+        android:weightSum="2">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1"
-            android:layout_marginBottom="-20dp"
-            android:background="@drawable/curved_path_2">
+            android:layout_weight="1"
+            >
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_centerHorizontal="true"
+                android:layout_width="227dp"
+                android:layout_height="280dp"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/blood_transfusion_2"
-                android:layout_marginBottom="@dimen/spacing_actionbar"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_actionbar"
+                android:scaleType="centerInside"
+                android:src="@drawable/fraggy3" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.9"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/curved_path_2"
             android:gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:gravity="center"
+                android:text="Explore updates around you"
                 android:textColor="@color/white"
-                app:fontFamily="@fonts/montserrat_medium"
-                android:text="Explore updates around you" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:fontFamily="@fonts/montserrat_medium" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:gravity="center"
-                android:text="@string/medium_lorem_ipsum"
                 android:paddingTop="@dimen/spacing_mmiddle"
-                app:fontFamily="@fonts/montserrat_light"
-                android:textColor="@color/be_hero_dark_grey" />
+                android:text="Calling hundreds of donors is no more required using Droppy Bank"
+                android:textColor="@color/be_hero_dark_grey"
+                android:textSize="18sp"
+                app:fontFamily="@fonts/montserrat_light" />
 
         </LinearLayout>
 

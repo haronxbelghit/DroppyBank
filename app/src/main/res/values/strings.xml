@@ -30,5 +30,7 @@
     <!--    Facebook Strings -->
     <string name="facebook_app_id">249969753904948</string>
     <string name="fb_login_protocol_scheme">fb249969753904948</string>
+    <string name="activity_all_requests">Explore all requests</string>
+    <string name="title_activity_maps">ActivityMaps</string>
 
 </resources>

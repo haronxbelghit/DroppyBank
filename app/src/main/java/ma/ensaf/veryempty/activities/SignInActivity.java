@@ -1,16 +1,18 @@
 package ma.ensaf.veryempty.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 
+import androidx.biometric.BiometricPrompt;
+import androidx.databinding.DataBindingUtil;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.concurrent.Executor;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.databinding.ActivitySignInBinding;
@@ -19,8 +21,13 @@ import ma.ensaf.veryempty.utils.PreferenceManager;
 
 public class SignInActivity extends BaseActivity {
     private static final String TAG = SignInActivity.class.getSimpleName();
+
     private ActivitySignInBinding binding;
     private PreferenceManager preferenceManager;
+
+
+
+
 
     public static void start(Context context) {
         Intent intent = new Intent(context, SignInActivity.class);
@@ -34,7 +41,7 @@ public class SignInActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         //////////SETTING THE PREFERENCEMANAGER
         preferenceManager = new PreferenceManager(getApplicationContext());
-
+        
         setListeners();
     }
 

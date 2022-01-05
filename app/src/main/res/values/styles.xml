@@ -28,13 +28,14 @@
 
     <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
     <style name="AppTheme_Launcher" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--
         <item name="android:windowBackground">@drawable/background_splash</item>
-        <!-- Optional, on Android 5+ you can modify the colorPrimaryDark color to match the windowBackground color for further branding-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>-->
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style name="AppTheme.FullScreen" parent="AppTheme">
