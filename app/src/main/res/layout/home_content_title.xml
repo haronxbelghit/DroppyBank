@@ -34,9 +34,9 @@
 
             <ma.ensaf.veryempty.widget.MaterialRippleLayout
                 android:id="@+id/post_update_ripple"
+                style="@style/RippleStyleBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/RippleStyleBlack"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/spacing_medium">
@@ -51,21 +51,21 @@
                         android:id="@+id/post_update_image_view"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        app:srcCompat="@drawable/ic_add"
+                        android:background="@drawable/bg_circle"
                         android:padding="@dimen/space_6"
-                        android:background="@drawable/bg_circle" />
+                        app:srcCompat="@drawable/ic_add" />
 
                     <TextView
                         android:id="@+id/post_update_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="Post Update"
-                        app:fontFamily="@fonts/montserrat_bold"
-                        android:textColor="@color/be_hero_dark_grey"
-                        android:layout_marginLeft="@dimen/spacing_medium"
                         android:layout_marginStart="@dimen/spacing_medium"
-                        android:background="@drawable/round_white_button_bg" />
+                        android:layout_marginLeft="@dimen/spacing_medium"
+                        android:background="@drawable/round_white_button_bg"
+                        android:text="Post Update"
+                        android:textColor="@color/be_hero_dark_grey"
+                        android:textStyle="bold"
+                        app:fontFamily="@fonts/montserrat_bold" />
 
                 </LinearLayout>
 

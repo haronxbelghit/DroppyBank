@@ -15,7 +15,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/ic_dono"
         android:iconTint="@color/finestWhite"
         android:title="Settings"
         app:showAsAction="always" />

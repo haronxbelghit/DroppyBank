@@ -2,11 +2,11 @@
 <resources>
     <!--<color name="colorPrimary">#BA0C2F</color>&lt;!&ndash;#EA1E63&ndash;&gt; &lt;!&ndash;#b72031&ndash;&gt;-->
     <!--<color name="colorPrimaryDark">#AF1236</color>-->
-    <color name="colorPrimary">#FF4D4D</color>
-    <color name="colorPrimaryDark">#FF217A</color>
-    <color name="colorPrimaryLight">#FF217A</color>
+    <color name="colorPrimary">#E20202</color>
+    <color name="colorPrimaryDark">#E20202</color>
+    <color name="colorPrimaryLight">#E20202</color>
 
-    <color name="colorAccent">#FF217A</color>
+    <color name="colorAccent">#FF4D4D</color>
     <color name="colorAccentDark">#FF4D4D</color>
     <color name="colorAccentLight">#FF4E4E</color>
     <color name="colorRed">#F44336</color>

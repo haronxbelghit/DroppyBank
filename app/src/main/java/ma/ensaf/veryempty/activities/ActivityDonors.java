@@ -61,7 +61,7 @@ public class ActivityDonors extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_donors);
         parent_view = findViewById(android.R.id.content);
 
-        initToolbar(binding.toolbar,true);
+        initToolbar(binding.donorsToolbar.toolbar,true);
 
         bindRecyclerView();
         usersList=getDonorsFromDb();
@@ -154,6 +154,9 @@ public class ActivityDonors extends BaseActivity {
                         }
                     }
                     groupDataIntoHashMap(users);
+                    binding.donorsCardView.becomeDonor.setOnClickListener(v -> {
+                        ActivityRegisterDonor.start(activityContext);
+                    });
                 });
         return users;
     }

@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -44,8 +44,8 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imageProfile"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:background="@drawable/background_image"
                     android:scaleType="centerCrop"
                     app:riv_oval="true" />
@@ -56,9 +56,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="add image"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textSize="10dp"
                     android:textStyle="bold"
-                    android:textColor="@color/be_hero_dark_grey"
                     app:fontFamily="@fonts/montserrat_regular" />
             </FrameLayout>
 
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -119,7 +119,8 @@
                     android:paddingBottom="17dp"
                     android:textColor="@color/be_hero_dark_grey"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    app:fontFamily="@fonts/montserrat_regular" />
+                    app:fontFamily="@fonts/montserrat_regular"
+                    android:autofillHints="" />
 
                 <ImageView
                     android:id="@+id/emailIcon"
@@ -136,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -174,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="@dimen/spacing_large"
                 android:background="@drawable/spinner_round_bg_white"
@@ -188,12 +189,13 @@
                 android:popupBackground="@android:color/white"
                 android:stateListAnimator="@drawable/spinner_anim"
                 android:textColor="@color/be_hero_dark_grey"
-                app:fontFamily="@fonts/montserrat_regular" />
+                app:fontFamily="@fonts/montserrat_regular"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="38dp"
                 android:animateLayoutChanges="true">
 
                 <Button
@@ -203,9 +205,6 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:background="@drawable/rect_button_red_background"
-                    android:paddingLeft="13dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="13dp"
                     android:text="Update"
                     android:textColor="@color/white"
                     android:textStyle="bold"
@@ -216,7 +215,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
             </FrameLayout>
 
