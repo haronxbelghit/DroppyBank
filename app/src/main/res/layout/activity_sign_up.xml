@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -40,7 +40,7 @@
                 android:id="@+id/layoutImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="38dp">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imageProfile"
@@ -56,9 +56,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="add image"
+                    android:textColor="@color/be_hero_dark_grey"
                     android:textSize="10dp"
                     android:textStyle="bold"
-                    android:textColor="@color/be_hero_dark_grey"
                     app:fontFamily="@fonts/montserrat_regular" />
             </FrameLayout>
 
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_white_button_bg">
 
@@ -209,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginTop="38dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="@dimen/spacing_large"
                 android:background="@drawable/spinner_round_bg_white"
@@ -230,28 +230,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:animateLayoutChanges="true">
-            <Button
-                android:id="@+id/signUpBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/rect_button_red_background"
-                android:paddingLeft="13dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="13dp"
-                android:text="Sign Up"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:fontFamily="@fonts/montserrat_medium" />
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:visibility="invisible"/>
 
-        </FrameLayout>
+                <Button
+                    android:id="@+id/signUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/rect_button_red_background"
+                    android:paddingLeft="13dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="13dp"
+                    android:text="Sign Up"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:fontFamily="@fonts/montserrat_medium" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:visibility="invisible" />
+
+            </FrameLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"

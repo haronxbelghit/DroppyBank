@@ -3,9 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ma.ensaf.veryempty">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="ma.ensaf.veryempty.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA" />
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
     <application
         android:name=".data.VeryEmpty"
@@ -20,6 +37,35 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:theme,android:icon">
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="Find Nearby Hospitals"
+            android:windowSoftInputMode="stateHidden" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name=".activities.ActivityNewPost"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.ActivityEditPersInfo"
             android:exported="false" />
@@ -42,9 +88,7 @@
             android:name=".activities.SplashActivity"
             android:configChanges="orientation"
             android:exported="true"
-            android:label="@string/app_name"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/AppTheme_Launcher">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -80,10 +124,10 @@
         <activity
             android:name=".activities.ActivityDonors"
             android:label="@string/activity_all_donors"
-            android:theme="@style/AppTheme.WhiteStatusBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.ActivityRequests"
+            android:label="@string/activity_all_requests"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activities.ActivityUserProfile"
@@ -93,6 +137,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.huawei.hms.client.channel.androidMarket"
+            android:value="false" />
     </application>
 
 </manifest>

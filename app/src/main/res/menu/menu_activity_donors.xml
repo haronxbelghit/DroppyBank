@@ -8,5 +8,5 @@
         app:showAsAction="always"
         android:title="Filter List"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_filter_list_dark" />
+        android:icon="@drawable/ic_filter_list" />
 </menu>

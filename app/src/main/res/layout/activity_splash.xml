@@ -14,47 +14,53 @@
             android:id="@+id/logo"
             android:layout_width="212dp"
             android:layout_height="212dp"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
             android:maxWidth="150dp"
             android:maxHeight="150dp"
-            android:src="@drawable/logo"
-            app:tint="@android:color/white" />
+            android:src="@drawable/logo" />
 
         <!--the bottom layout to show the curves and spinner-->
         <RelativeLayout
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/logo">
+            android:layout_below="@+id/logo"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:adjustViewBounds="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
+                android:adjustViewBounds="true"
                 android:src="@drawable/vector_curve_group_1"
-                app:tint="@android:color/white" />
+                 />
 
             <ProgressBar
                 android:id="@+id/loading_progress"
+                style="?android:attr/progressBarStyleInverse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="200dp"
+                android:backgroundTint="@color/colorRed"
+                android:foregroundTint="@color/colorRed"
+                android:foregroundTintMode="screen"
                 android:indeterminate="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                style="?android:attr/progressBarStyleInverse"/>
-
+                android:progressBackgroundTint="@color/colorRed"
+                android:progressBackgroundTintMode="add"
+                android:progressTint="@color/colorRed" />
 
             <ImageView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="end"
                 android:adjustViewBounds="true"

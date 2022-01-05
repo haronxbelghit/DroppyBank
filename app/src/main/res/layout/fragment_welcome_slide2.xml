@@ -13,23 +13,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1">
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_centerHorizontal="true"
+                android:layout_width="227dp"
+                android:layout_height="280dp"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/blood_transfusion_1"
-                android:layout_marginBottom="@dimen/spacing_actionbar"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_actionbar"
+                android:scaleType="centerInside"
+                android:src="@drawable/fraggy4" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.9"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:background="@drawable/curved_path_1"
             android:gravity="center"
             android:orientation="vertical">
@@ -40,7 +40,7 @@
                 android:gravity="center"
                 android:text="Search Blood Donor"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:fontFamily="@fonts/montserrat_medium" />
 
@@ -48,10 +48,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingStart="10dp"
                 android:paddingTop="@dimen/spacing_mmiddle"
-                android:text="@string/medium_lorem_ipsum"
+                android:paddingEnd="10dp"
+                android:text="The app is free just like how a donation should be"
                 android:textColor="@color/be_hero_dark_grey"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:fontFamily="@fonts/montserrat_light" />
 
         </LinearLayout>

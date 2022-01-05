@@ -58,11 +58,11 @@
                     android:layout_width="@dimen/spacing_large"
                     android:layout_height="@dimen/spacing_large"
                     android:layout_centerVertical="true"
-                    android:padding="@dimen/spacing_medium"
-                    app:srcCompat="@drawable/ic_action_check"
-                    android:background="@drawable/circle_blue"
                     android:layout_toEndOf="@+id/user_name_text_view"
-                    android:layout_toRightOf="@+id/user_name_text_view"/>
+                    android:layout_toRightOf="@+id/user_name_text_view"
+                    android:background="@drawable/circle_blue"
+                    android:padding="@dimen/spacing_medium"
+                    app:srcCompat="@drawable/ic_action_check" />
 
             </RelativeLayout>
 

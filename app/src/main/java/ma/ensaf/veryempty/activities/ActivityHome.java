@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.facebook.login.LoginManager;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,13 +61,24 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
         initViews();
         setListeners();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        final View iconView = menuView.getChildAt(2).findViewById(R.id.settings);
+        final ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
+        final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        // set your height here
+        layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 102, displayMetrics);
+        // set your width here
+        layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 102, displayMetrics);
+        iconView.setLayoutParams(layoutParams);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
     private void setListeners() {
+
         binding.logoutBtn.setOnClickListener(v -> signOut());
+        binding.reserachBtn.setOnClickListener(v -> {
+            MapsActivity.start(activityContext);
+        });
     }
 
     private void signOut() {
@@ -78,6 +93,12 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
     }
 
     private void initViews() {
+
+
+
+        binding.homeTitleLayout.postUpdateRipple.setOnClickListener(v -> {
+            ActivityNewPost.start(activityContext);
+        });
 
         // show all the donors
         binding.homeContentTop.buttonFindDonor.setOnClickListener(v -> {

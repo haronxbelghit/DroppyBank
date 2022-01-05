@@ -13,23 +13,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.1">
+            android:layout_weight="1">
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_centerHorizontal="true"
+                android:layout_width="227dp"
+                android:layout_height="280dp"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/blood_transfusion"
-                android:layout_marginBottom="@dimen/spacing_actionbar"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_actionbar"
+                android:scaleType="centerInside"
+                android:src="@drawable/fraggy" />
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.9"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:background="@drawable/curved_path">
@@ -37,22 +37,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
                 android:gravity="center"
                 android:text="Donate Blood"
                 android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:fontFamily="@fonts/montserrat_medium" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:gravity="center"
-                app:fontFamily="@fonts/montserrat_light"
-                android:text="@string/medium_lorem_ipsum"
                 android:paddingTop="@dimen/spacing_mmiddle"
-                android:textColor="@color/be_hero_dark_grey" />
+                android:text="World's first blood donation platform"
+                android:textColor="@color/be_hero_dark_grey"
+                android:textSize="18sp"
+                app:fontFamily="@fonts/montserrat_light" />
 
         </LinearLayout>
 

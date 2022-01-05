@@ -6,28 +6,28 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:background="@color/white"
-            android:layout_alignParentTop="true"
-            android:theme="@style/ArrowToolbarStyle"
-            app:titleTextColor="@color/colorPrimary"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:theme="@style/ArrowToolbarStyle"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/colorPrimary">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:text="@string/activity_register_donor"
+                android:textColor="@color/be_hero_dark"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:fontFamily="@fonts/montserrat_bold"
-                android:textColor="@color/be_hero_dark"
-                android:text="@string/activity_register_donor" />
+                app:fontFamily="@fonts/montserrat_bold" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -38,7 +38,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_large">
 
@@ -46,83 +46,83 @@
                     android:id="@+id/inputPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rect_silver_background"
                     android:hint="Phone number"
-                    android:maxLines="1"
-                    android:textSize="14sp"
                     android:inputType="phone"
+                    android:maxLines="1"
                     android:minHeight="?attr/actionBarSize"
-                    app:fontFamily="@fonts/montserrat_medium"
-                    android:paddingTop="@dimen/spacing_large"
-                    android:paddingBottom="@dimen/spacing_large"
                     android:paddingLeft="@dimen/spacing_mxlarge"
+                    android:paddingTop="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_mxlarge"
-                    android:background="@drawable/rect_silver_background" />
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:textSize="14sp"
+                    app:fontFamily="@fonts/montserrat_medium" />
 
 
                 <EditText
                     android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:layout_marginTop="38dp"
+                    android:background="@drawable/rect_silver_background"
                     android:hint="Email"
-                    android:textSize="14sp"
                     android:inputType="textEmailAddress"
+                    android:maxLines="1"
                     android:minHeight="?attr/actionBarSize"
-                    app:fontFamily="@fonts/montserrat_regular"
-                    android:paddingTop="@dimen/spacing_large"
                     android:paddingLeft="@dimen/spacing_xlarge"
+                    android:paddingTop="@dimen/spacing_large"
                     android:paddingRight="@dimen/spacing_xlarge"
                     android:paddingBottom="@dimen/spacing_large"
                     android:textColor="@color/be_hero_dark_grey"
-                    android:layout_marginTop="@dimen/spacing_large"
-                    android:background="@drawable/rect_silver_background" />
+                    android:textSize="14sp"
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
                     android:text="Gender"
+                    android:textColor="@color/be_hero_dark"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/be_hero_dark"
-                    app:fontFamily="@fonts/montserrat_regular"
-                    android:layout_marginTop="@dimen/spacing_large" />
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/spacing_mmiddle">
+                    android:layout_marginTop="@dimen/spacing_mmiddle"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:orientation="vertical"
+                        android:layout_toStartOf="@+id/gender_divider"
                         android:layout_toLeftOf="@+id/gender_divider"
-                        android:layout_toStartOf="@+id/gender_divider">
+                        android:gravity="right"
+                        android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/gender_male_image_view"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:scaleType="centerCrop"
-                            app:tint="@color/be_hero_dark_grey"
+                            android:background="@drawable/radio_button_selector"
                             android:padding="@dimen/spacing_mmiddle"
+                            android:scaleType="centerCrop"
                             app:srcCompat="@drawable/ic_male_avatar"
-                            android:background="@drawable/radio_button_selector" />
+                            app:tint="@color/be_hero_dark_grey" />
 
                         <TextView
                             android:id="@+id/gender_male_text_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Male"
+                            android:layout_marginTop="@dimen/spacing_medium"
                             android:gravity="end"
+                            android:paddingRight="@dimen/spacing_middle"
+                            android:text="Male"
+                            android:textColor="@color/be_hero_dark_grey"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            app:fontFamily="@fonts/montserrat_medium"
-                            android:textColor="@color/be_hero_dark_grey"
-                            android:paddingRight="@dimen/spacing_middle"
-                            android:layout_marginTop="@dimen/spacing_medium"/>
+                            app:fontFamily="@fonts/montserrat_medium" />
 
                     </LinearLayout>
 
@@ -132,40 +132,40 @@
                         android:layout_height="48dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerInParent="true"
-                        android:background="@color/md_grey_400"
-                        android:layout_marginTop="@dimen/spacing_mmiddle"
                         android:layout_marginLeft="@dimen/spacing_mxlarge"
-                        android:layout_marginRight="@dimen/spacing_mxlarge"/>
+                        android:layout_marginTop="@dimen/spacing_mmiddle"
+                        android:layout_marginRight="@dimen/spacing_mxlarge"
+                        android:background="@color/md_grey_400" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/gender_divider"
                         android:gravity="left"
-                        android:orientation="vertical"
-                        android:layout_toRightOf="@+id/gender_divider">
+                        android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/gender_female_image_view"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:scaleType="centerCrop"
-                            android:padding="@dimen/spacing_mmiddle"
-                            app:srcCompat="@drawable/ic_female_avatar"
                             android:background="@drawable/radio_button_selector"
+                            android:padding="@dimen/spacing_mmiddle"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/ic_female_avatar"
                             app:tint="@color/be_hero_dark_grey" />
 
                         <TextView
                             android:id="@+id/gender_female_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Female"
+                            android:layout_marginTop="@dimen/spacing_medium"
                             android:gravity="end"
+                            android:paddingLeft="@dimen/spacing_middle"
+                            android:text="Female"
+                            android:textColor="@color/be_hero_dark_grey"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            app:fontFamily="@fonts/montserrat_medium"
-                            android:paddingLeft="@dimen/spacing_middle"
-                            android:textColor="@color/be_hero_dark_grey"
-                            android:layout_marginTop="@dimen/spacing_medium"/>
+                            app:fontFamily="@fonts/montserrat_medium" />
 
                     </LinearLayout>
 
@@ -174,12 +174,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:layout_marginTop="38dp"
                     android:text="Select Blood Group"
                     android:textColor="@color/be_hero_dark"
-                    app:fontFamily="@fonts/montserrat_regular"
-                    android:layout_marginTop="@dimen/spacing_xlarge" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@fonts/montserrat_regular" />
 
                 <!--Blood Group Radio Buttons-->
                 <RelativeLayout
@@ -191,8 +191,8 @@
                         android:id="@+id/blood_group_radio_layout_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentTop="true">
+                        android:layout_alignParentTop="true"
+                        android:orientation="horizontal">
 
                         <RadioGroup
                             android:id="@+id/blood_group_radio_group_1"
@@ -204,14 +204,14 @@
                                 android:id="@+id/blood_group_radio_1"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="A+"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="A+"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -225,14 +225,14 @@
                                 android:id="@+id/blood_group_radio_2"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="A-"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="A-"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -246,14 +246,14 @@
                                 android:id="@+id/blood_group_radio_3"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="B+"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="B+"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -267,14 +267,14 @@
                                 android:id="@+id/blood_group_radio_4"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="B-"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="B-"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -288,14 +288,14 @@
                                 android:id="@+id/blood_group_radio_5"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="0+"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="0+"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -309,14 +309,14 @@
                                 android:id="@+id/blood_group_radio_6"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="0-"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="0-"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -325,9 +325,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_below="@+id/blood_group_radio_layout_1"
                         android:layout_marginTop="@dimen/spacing_large"
-                        android:layout_below="@+id/blood_group_radio_layout_1">
+                        android:orientation="horizontal">
 
                         <RadioGroup
                             android:id="@+id/blood_group_radio_group_7"
@@ -339,14 +339,14 @@
                                 android:id="@+id/blood_group_radio_7"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="AB+"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="AB+"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -360,14 +360,14 @@
                                 android:id="@+id/blood_group_radio_8"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
-                                android:text="AB-"
-                                android:textSize="16sp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
                                 android:gravity="center"
                                 android:padding="@dimen/spacing_mmiddle"
-                                app:fontFamily="@fonts/montserrat_regular"
-                                android:button="@android:color/transparent"
-                                android:background="@drawable/radio_button_selector"
-                                android:textColor="@drawable/radio_button_text_selector"/>
+                                android:text="AB-"
+                                android:textColor="@drawable/radio_button_text_selector"
+                                android:textSize="16sp"
+                                app:fontFamily="@fonts/montserrat_regular" />
 
                         </RadioGroup>
 
@@ -375,7 +375,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4"/>
+                            android:layout_weight="4" />
 
                     </LinearLayout>
 
@@ -385,26 +385,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/spacing_xlarge">
+                    android:orientation="horizontal">
 
                     <CheckBox
                         android:id="@+id/conditions_checkbox"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:button="@drawable/checkbox_custom"
-                        android:layout_marginRight="@dimen/spacing_large"/>
+                        android:layout_marginRight="@dimen/spacing_large"
+                        android:button="@drawable/checkbox_custom" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
                         android:layout_gravity="center"
                         android:gravity="start|center_vertical"
+                        android:text="You are in good general health, weigh at least 50kg, and are at least 16 years old"
                         android:textColor="@color/be_hero_dark"
-                        app:fontFamily="@fonts/montserrat_medium"
-                        android:text="You are in good general health, weigh at least 50kg, and are at least 16 years old" />
+                        android:textSize="14sp"
+                        app:fontFamily="@fonts/montserrat_medium" />
 
                 </LinearLayout>
 
@@ -413,33 +413,34 @@
                     style="@style/RippleStyleWhite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xlarge"
-                    android:layout_below="@+id/input_phone_number_layout">
+                    android:layout_below="@+id/input_phone_number_layout"
+                    android:layout_marginTop="52dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:animateLayoutChanges="true">
-                    <Button
-                        android:id="@+id/button_register_donor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Done"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:padding="@dimen/spacing_large"
-                        app:fontFamily="@fonts/montserrat_medium"
-                        android:background="@drawable/rect_button_red_background"/>
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="center"
-                        android:visibility="invisible"/>
 
-                </FrameLayout>
+                        <Button
+                            android:id="@+id/button_register_donor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rect_button_red_background"
+                            android:padding="@dimen/spacing_large"
+                            android:text="Done"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:fontFamily="@fonts/montserrat_medium" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:visibility="invisible" />
+
+                    </FrameLayout>
 
                 </ma.ensaf.veryempty.widget.MaterialRippleLayout>
 

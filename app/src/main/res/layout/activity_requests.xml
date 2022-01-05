@@ -9,11 +9,10 @@
 
         <include
             android:id="@+id/requests_toolbar"
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/toolbar"
-            android:layout_alignParentTop="true"
-            />
+            android:layout_alignParentTop="true" />
 
         <RelativeLayout
             android:id="@+id/layout_parent"
