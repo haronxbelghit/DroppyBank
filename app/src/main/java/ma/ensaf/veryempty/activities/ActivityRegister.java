@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,8 +11,6 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
-import com.facebook.CallbackManager;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.concurrent.Executor;
 
@@ -56,7 +53,8 @@ public class ActivityRegister extends BaseActivity {
             startActivity(intent);
             finish();
         }
-        /// Fingerprint
+        ///
+
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(this,
                 executor, new BiometricPrompt.AuthenticationCallback() {
@@ -74,6 +72,7 @@ public class ActivityRegister extends BaseActivity {
             public void onAuthenticationSucceeded(
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
+                preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
                 Toast.makeText(getApplicationContext(),"Authentication succeeded!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(),ActivityHome.class));
             }
@@ -101,7 +100,12 @@ public class ActivityRegister extends BaseActivity {
         binding.registerLink.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),SignUpActivity.class)));
         binding.signInLayout.setOnClickListener(v ->{
             // TODO: add already signed in condition here
-            biometricPrompt.authenticate(promptInfo);
+            if(preferenceManager.getBoolean(Constants.LOGGEDIN_ONCE_BEFORE)) {
+                biometricPrompt.authenticate(promptInfo);
+
+            } else {
+                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+            }
         });
         binding.facebookBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),FacebookAuthActivity.class);

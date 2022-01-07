@@ -9,7 +9,6 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,18 +19,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.facebook.login.LoginManager;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.PostsAdapter;
-import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityHomeBinding;
+import ma.ensaf.veryempty.models.Posts;
+import ma.ensaf.veryempty.models.Users;
+import ma.ensaf.veryempty.utils.Constants;
 import ma.ensaf.veryempty.utils.PreferenceManager;
 
 public class ActivityHome extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +44,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
     private PreferenceManager preferenceManager;
     private View parent_view;
     private PostsAdapter postsAdapter;
+    private FirebaseFirestore database;
     BottomNavigationView bottomNavigationView;
     public static void start(Context context) {
         Intent intent = new Intent(context, ActivityHome.class);
@@ -71,6 +74,7 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
         layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 102, displayMetrics);
         iconView.setLayoutParams(layoutParams);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        getPostsFromDb();
     }
 
     private void setListeners() {
@@ -79,11 +83,15 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
         binding.reserachBtn.setOnClickListener(v -> {
             MapsActivity.start(activityContext);
         });
+
     }
 
     private void signOut() {
         showToast("signing out...",false);
-        preferenceManager.clear();
+        //preferenceManager.clear();
+        preferenceManager.putBoolean(Constants.LOGGEDIN_ONCE_BEFORE,true);
+        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,false);
+
         startActivity(new Intent(getApplicationContext(),ActivityRegister.class));
         //might generate errors
         LoginManager.getInstance().logOut();
@@ -110,45 +118,80 @@ public class ActivityHome extends BaseActivity implements BottomNavigationView.O
             ActivityRequests.start(activityContext);
         });
 
-        // show the posts
-        binding.postsRecyclerView.setLayoutManager(new LinearLayoutManager(activityContext));
-        binding.postsRecyclerView.setHasFixedSize(true);
-        binding.postsRecyclerView.setNestedScrollingEnabled(false);
-        //set data and list adapter
-        postsAdapter = new PostsAdapter(activityContext, Constants.getPosts(activityContext));
-        binding.postsRecyclerView.setAdapter(postsAdapter);
 
-        // clicking the ask for help button
-        postsAdapter.SetOnItemClickListener((v, position, obj) -> {
-            switch (v.getId()){
-                case R.id.action_like_image_view:
-                    // get the tag
-                    String imageTag = (String) v.findViewById(R.id.action_like_image_view).getTag();
-                    if(imageTag.equalsIgnoreCase("liked")){
-                        v.findViewById(R.id.action_like_image_view).setTag("like");
-                        ((ImageView)v.findViewById(R.id.action_like_image_view)).setImageResource(R.drawable.ic_heart_empty);
-                    }else{
-                        v.findViewById(R.id.action_like_image_view).setTag("liked");
-                        ((ImageView)v.findViewById(R.id.action_like_image_view)).setImageResource(R.drawable.ic_heart_filled);
+    }
+
+    public void getPostsFromDb() {
+        database = FirebaseFirestore.getInstance();
+        List<Posts> posts= new ArrayList<>();
+
+        database.collection(ma.ensaf.veryempty.utils.Constants.KEY_COLLECTION_POSTS)
+                .get()
+                .addOnCompleteListener(task ->  {
+                    if(task.isSuccessful() && task.getResult() != null) {
+                        int i=0;
+                        for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult()) {
+                            i++;
+                            Users user = new Users(i,queryDocumentSnapshot.getString(Constants.KEY_POSTER_NAME)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_IMAGE)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_POST_LOCATION)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_PHONE),
+                                    queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_BLOOD_TYPE),
+                                    queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_POST_DATE));
+
+                            Posts post = new Posts(i,user
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_POST_DATE)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_POST_BODY)
+                                    , queryDocumentSnapshot.getString(ma.ensaf.veryempty.utils.Constants.KEY_POST_IMAGE)
+                                   );
+
+                            posts.add(post);
+                            Collections.reverse(posts);
+                        }
                     }
-                    break;
-                case R.id.action_share_image_view:
-                    //Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
-                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    String shareBody = "Hey, I think you might be interested in this Post from the Droppy App \"Link_to_Post\"";
-                    String shareSub = "DROPPY Post";
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
+                   ////////////
+                    // show the posts
+                    binding.postsRecyclerView.setLayoutManager(new LinearLayoutManager(activityContext));
+                    binding.postsRecyclerView.setHasFixedSize(true);
+                    binding.postsRecyclerView.setNestedScrollingEnabled(false);
+                    //set data and list adapter
+                    postsAdapter = new PostsAdapter(activityContext, posts);
+                    binding.postsRecyclerView.setAdapter(postsAdapter);
+
+                    // clicking the ask for help button
+                    postsAdapter.SetOnItemClickListener((v, position, obj) -> {
+                        switch (v.getId()){
+                            case R.id.action_like_image_view:
+                                // get the tag
+                                String imageTag = (String) v.findViewById(R.id.action_like_image_view).getTag();
+                                if(imageTag.equalsIgnoreCase("liked")){
+                                    v.findViewById(R.id.action_like_image_view).setTag("like");
+                                    ((ImageView)v.findViewById(R.id.action_like_image_view)).setImageResource(R.drawable.ic_heart_empty);
+                                }else{
+                                    v.findViewById(R.id.action_like_image_view).setTag("liked");
+                                    ((ImageView)v.findViewById(R.id.action_like_image_view)).setImageResource(R.drawable.ic_heart_filled);
+                                }
+                                break;
+                            case R.id.action_share_image_view:
+                                //Snackbar.make(parent_view, "Share Clicked...", Snackbar.LENGTH_LONG).show();
+                                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                                sharingIntent.setType("text/plain");
+                                String shareBody = "Hey, I think you might be interested in this Post from the Droppy App \"Link_to_Post\"";
+                                String shareSub = "DROPPY Post";
+                                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
+                                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                                break;
                 /*case R.id.action_comment_image_view:
                     Snackbar.make(parent_view, "Comment Clicked...", Snackbar.LENGTH_LONG).show();
                     break;*/
-            }
-        });
-    }
+                        }
+                    });
+                    ///////////////////
 
+                });
+        //return users;
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Intent intent;

@@ -96,6 +96,8 @@ public class SignInActivity extends BaseActivity {
                         preferenceManager.putString(Constants.KEY_CITY, documentSnapshot.getString(Constants.KEY_CITY));
                         preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
                         preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
+                        preferenceManager.putInt(Constants.KEY_COUNT_DONATIONS,documentSnapshot.getDouble(Constants.KEY_COUNT_DONATIONS).intValue());
+                        preferenceManager.putInt(Constants.KEY_COUNT_REQUESTS,documentSnapshot.getDouble(Constants.KEY_COUNT_REQUESTS).intValue());
                         Intent intent= new Intent(getApplicationContext(),ActivityHome.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
