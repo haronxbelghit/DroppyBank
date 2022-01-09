@@ -43,7 +43,7 @@ public class Constants {
         return items;
     }
 
-    // demo posts
+ /*   // demo posts
     @SuppressLint("Recycle")
     public static List<Posts> getPosts(Context ctx) {
         List<Posts> items = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Constants {
         Collections.shuffle(items, rnd);
         return items;
     }
-
+*/
     private static int getRandomIndex(Random r, int min, int max) {
         return r.nextInt(max - min) + min;
     }

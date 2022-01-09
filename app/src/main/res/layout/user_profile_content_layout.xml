@@ -47,12 +47,13 @@
                         android:id="@+id/user_total_donations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="4"
-                        android:textSize="20sp"
                         android:gravity="center"
+                        android:text="0"
                         android:textAllCaps="true"
-                        app:fontFamily="@fonts/montserrat_light"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@fonts/montserrat_light" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -78,13 +79,13 @@
                         android:id="@+id/user_total_requests"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="124"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        app:fontFamily="@fonts/montserrat_light"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        app:fontFamily="@fonts/montserrat_light" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -141,6 +142,7 @@
                 android:layout_below="@+id/user_profile_top_layout">
 
                 <RelativeLayout
+                    android:id="@+id/heroBadge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -161,17 +163,17 @@
                         android:id="@+id/user_donor_type_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:text="Hero donor"
-                        android:singleLine="true"
-                        android:textAllCaps="true"
+                        android:layout_toEndOf="@+id/user_donor_type_image_view"
+                        android:layout_toRightOf="@+id/user_donor_type_image_view"
                         android:paddingTop="@dimen/space_6"
                         android:paddingBottom="@dimen/space_6"
-                        app:fontFamily="@fonts/montserrat_light"
+                        android:singleLine="true"
+                        android:text="Hero donor"
+                        android:textAllCaps="true"
                         android:textColor="@android:color/white"
-                        android:layout_toEndOf="@+id/user_donor_type_image_view"
-                        android:layout_toRightOf="@+id/user_donor_type_image_view"/>
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@fonts/montserrat_light" />
 
                 </RelativeLayout>
 

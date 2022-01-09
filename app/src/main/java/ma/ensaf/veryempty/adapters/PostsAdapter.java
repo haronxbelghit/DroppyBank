@@ -8,7 +8,10 @@ import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.Html;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,8 +77,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         // set the views
         holder.binding.userNameTextView.setText(obj.getUser().getName());
-        holder.binding.userImageView.setImageResource(obj.getUser().getImage());
-        holder.binding.postImageView.setImageResource(obj.getPostImage());
+        byte[] bytes = Base64.decode(obj.getUser().getImage(),Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        holder.binding.userImageView.setImageBitmap(bitmap);
+        byte[] bytes2 = Base64.decode(obj.getPostImage(),Base64.DEFAULT);
+        Bitmap bitmap2 = BitmapFactory.decodeByteArray(bytes2,0,bytes2.length);
+        holder.binding.postImageView.setImageBitmap(bitmap2);
         holder.binding.postContentTextView.setText(Html.fromHtml(obj.getPostContent()));
         holder.binding.userLocationTextView.setText(obj.getUser().getLocation());
 
@@ -90,18 +97,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         }
 
         // to show and hide the various layouts
-        if(position % 2 != 0){
-            holder.binding.postImageView.setVisibility(View.VISIBLE);
-            holder.binding.userVerifiedImageView.setVisibility(View.GONE);
-        }else{
-            holder.binding.postImageView.setVisibility(View.GONE);
-            holder.binding.userVerifiedImageView.setVisibility(View.VISIBLE);
-            holder.binding.actionShareImageView.setVisibility(View.GONE);
-        }
-
-        if(position % 3 == 0 && position !=0){
-            holder.binding.postContentTextView.setVisibility(View.GONE);
-        }
+//        if(position % 2 != 0){
+//            holder.binding.postImageView.setVisibility(View.VISIBLE);
+//            holder.binding.userVerifiedImageView.setVisibility(View.GONE);
+//        }else{
+//            holder.binding.postImageView.setVisibility(View.GONE);
+//            holder.binding.userVerifiedImageView.setVisibility(View.VISIBLE);
+//            holder.binding.actionShareImageView.setVisibility(View.GONE);
+//        }
+//
+//        if(position % 3 == 0 && position !=0){
+//            holder.binding.postContentTextView.setVisibility(View.GONE);
+//        }
 
         // Here you apply the animation when the view is bound
         setAnimation(holder.itemView, position);

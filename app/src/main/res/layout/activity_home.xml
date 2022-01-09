@@ -127,10 +127,10 @@
                 <!--The title layout which includes the Explore and Post Update layouts-->
                 <include
                     android:id="@+id/home_title_layout"
+                    layout="@layout/home_content_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    layout="@layout/home_content_title"/>
+                    android:layout_gravity="bottom" />
 
             </com.google.android.material.appbar.AppBarLayout>
 

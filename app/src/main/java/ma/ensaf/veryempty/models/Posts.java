@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class Posts implements Serializable {
     private int id;
-    private CUsers user;
+    private Users user;
     private String timeAgo;
     private String postContent;
-    private int postImage;
+    private String postImage;
     private boolean isLiked;
 
     public Posts() {
     }
 
-    public Posts(int id, CUsers user, String timeAgo, String postContent, int postImage) {
+    public Posts(int id, Users user, String timeAgo, String postContent, String postImage) {
         this.id = id;
         this.user = user;
         this.timeAgo = timeAgo;
@@ -21,7 +21,7 @@ public class Posts implements Serializable {
         this.postImage = postImage;
     }
 
-    public Posts(int id, CUsers user, String timeAgo, String postContent, int postImage, boolean isLiked) {
+    public Posts(int id, Users user, String timeAgo, String postContent, String postImage, boolean isLiked) {
         this.id = id;
         this.user = user;
         this.timeAgo = timeAgo;
@@ -38,11 +38,11 @@ public class Posts implements Serializable {
         this.id = id;
     }
 
-    public CUsers getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(CUsers user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 
@@ -62,11 +62,11 @@ public class Posts implements Serializable {
         this.postContent = postContent;
     }
 
-    public int getPostImage() {
+    public String getPostImage() {
         return postImage;
     }
 
-    public void setPostImage(int postImage) {
+    public void setPostImage(String postImage) {
         this.postImage = postImage;
     }
 

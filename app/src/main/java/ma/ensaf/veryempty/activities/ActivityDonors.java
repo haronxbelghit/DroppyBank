@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import ma.ensaf.veryempty.R;
 import ma.ensaf.veryempty.adapters.DonorsAdapter;
-import ma.ensaf.veryempty.data.Constants;
 import ma.ensaf.veryempty.databinding.ActivityDonorsBinding;
-import ma.ensaf.veryempty.models.CUsers;
 import ma.ensaf.veryempty.models.HeaderItem;
 import ma.ensaf.veryempty.models.RowItem;
 import ma.ensaf.veryempty.models.Users;
@@ -34,8 +31,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ActivityDonors extends BaseActivity {
 

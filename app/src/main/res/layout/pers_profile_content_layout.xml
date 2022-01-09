@@ -52,6 +52,7 @@
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         app:fontFamily="@fonts/montserrat_light" />
 
                     <TextView
@@ -78,13 +79,13 @@
                         android:id="@+id/pers_total_requests"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="124"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        app:fontFamily="@fonts/montserrat_light"
-                        android:textColor="@color/colorPrimaryDark"/>
+                        app:fontFamily="@fonts/montserrat_light" />
 
                     <TextView
                         android:layout_width="match_parent"

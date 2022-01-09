@@ -54,15 +54,20 @@ public class DateTimeUtils {
 
         final long diff = now - time;
         if (diff < MINUTE_MILLIS) {
-            return "moments ago";
+            //return "moments ago";
+            return DateFormat.format("dd-MMM-yyyy", parsedDate).toString();
         } else if (diff < 2 * MINUTE_MILLIS) {
-            return "a minute ago";
+            //return "a minute ago";
+            return DateFormat.format("dd-MMM-yyyy", parsedDate).toString();
         } else if (diff < 60 * MINUTE_MILLIS) {
-            return diff / MINUTE_MILLIS + " minutes ago";
+            //return diff / MINUTE_MILLIS + " minutes ago";
+            return DateFormat.format("dd-MMM-yyyy", parsedDate).toString();
         } else if (diff < 2 * HOUR_MILLIS) {
-            return "an hour ago";
+            //return "an hour ago";
+            return DateFormat.format("dd-MMM-yyyy", parsedDate).toString();
         } else if (diff < 24 * HOUR_MILLIS) {
-            return diff / HOUR_MILLIS + " hours ago";
+            //return diff / HOUR_MILLIS + " hours ago";
+            return DateFormat.format("dd-MMM-yyyy", parsedDate).toString();
         } else if (diff < 48 * HOUR_MILLIS) {
             return "yesterday";
         } else {
