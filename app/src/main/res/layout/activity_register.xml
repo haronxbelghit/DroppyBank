@@ -13,11 +13,12 @@
 
         <ImageView
             android:id="@+id/hand_image_vector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/blood_transfusion_3"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            android:layout_width="345dp"
+            android:layout_height="291dp"
+            android:layout_marginTop="99dp"
+            android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -189,6 +190,7 @@
                     android:layout_marginLeft="17dp"
                     android:layout_marginRight="10dp"
                     android:text="You don't have an account?"
+                    app:fontFamily="@fonts/montserrat_regular"
 
                     />
 
@@ -197,6 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/regiterText"
+                    app:fontFamily="@fonts/montserrat_regular"
                     android:maxLines="1"
                     android:paddingTop="15dp"
                     android:paddingBottom="17dp"
