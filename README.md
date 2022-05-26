@@ -1,11 +1,4 @@
-# merksterz
-NOTES:
--uninstall the app nd then install it again
--give it phone permission
--create new account cuz i deleted the database 
-TODO:
--create new post activ
--make the ui tweaks
--make posts dynamic
--add delete button to delete all user requests nd another for donation
--add the menu to profile nd donors/requests activs too 
+# Droppy Bank
+A mobile android app for blood donation, made with Java using the most common practices of ViewBinding and DataBinding.
+
+A presentation about the app (in french) : https://docs.google.com/presentation/d/1xC3TrQwO7fZpBxCOR52eIZNu1OrgCK4A/
